@@ -5,7 +5,7 @@ from harmonia_dois.PitchNumber2 import PitchNumber2
 from harmonia_dois.Start2 import Start2
 from interface_janela.CriandoJanela import CriandoJanela
 from music21 import corpus, meter, pitch, note, stream, clef
-from music21.stream import Stream
+
 
 
 def main():
