@@ -14,19 +14,13 @@ class StartHarmonizacaoPelaInterface:
         # obtendo diretório partitura em string
         ip = InserirPartitura()
 
-        # None pois não passaremos o primeiro atributo janela # também poderia ser escrito assim:
-        # filePath = ip.inserindo(number = valor)
-        # number se refere ao nome da variável na função que está sendo chamada
-        # valor se refere ao valor que será passado para essa posição especifica
+        # retorna diretório da partitura
         filePath = ip.inserindo(valor)
 
         # parse na partitura
         partitura = converter.parse(filePath)
 
-        # começando harmonização
-        #st.startProgram2(partitura)
-
-        # ==================== PRECISA CONTINUAR TELA LOADING ==========================
+        # ==================== threads ==========================
         if filePath != " ":
             # destruir tela menu
             root.destroy()
@@ -34,7 +28,7 @@ class StartHarmonizacaoPelaInterface:
             tl = TelaLoading()
             st = Start2()
 
-            # threads
+            # criar tela loading (transitória)
             t1 = Thread(target=tl.loading)
             # precisa vírgula e (): a string partitura vira tupla, assim o kwarg não a quebra em vários args
             t2 = Thread(target=st.startProgram2, args=(partitura,))

@@ -5,15 +5,13 @@ from interface_janela.DimensoesJanela import DimensoesJanela
 
 
 class TelaLoading:
-    global newRoot
-    # criando a tela de loading na mesma classe do playgif para evitar bugs do Tkinter.
+    # criando função loading na mesma classe da função play_gif para evitar bugs do Tkinter.
     def loading(self):
-        global newRoot
         dp = DimensoesJanela()
         newRoot = Tk()
         dp.dimensoes(newRoot, 600, 600)               # chamar função dimensões e posição da janela
-        img = Image.open(r"arquivos\loading.gif")  # abre arquivo gif pela library PIL
-        lbl = Label(newRoot)  # adicona a uma label
+        img = Image.open(r"arquivos\loading.gif")     # abre arquivo gif pela library PIL
+        lbl = Label(newRoot)                          # adicona a uma label
         lbl.place(x=0, y=0)
         self.play_gif(newRoot,lbl,img)
 
@@ -35,5 +33,5 @@ class TelaLoading:
             newRoot.destroy()
 
     def stop_gif(self):
-        global number
+        global number   # chamado pela classe Start2
         number=1
