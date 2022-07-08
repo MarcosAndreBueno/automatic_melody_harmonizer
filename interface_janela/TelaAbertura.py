@@ -10,7 +10,7 @@ class TelaAbertura():
         janela_abertura = Tk()
         janela_abertura.title("HARMONIZAÇÃO AUTOMÁTICA DE MELODIAS FFCLRP_2022")
 
-        img = PhotoImage(file="arquivos\Logo programa.png")
+        img = PhotoImage(file="arquivos\logo.png")
         label_imagem = Label(janela_abertura, image=img).pack()
 
         dp = DimensoesJanela()

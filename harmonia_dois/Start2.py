@@ -9,7 +9,7 @@ from music21 import stream, note, meter
 
 
 class Start2:
-    def startProgram2(self, partitura):
+    def startProgram2(self, partitura, newRoot):
 
         # ====================Transpor para Dó Maior====================
         # código
@@ -86,7 +86,13 @@ class Start2:
         s2 = tg.preenchendo_gaps(s2, listaDuracao)
 
         # ====================RESULTADO====================
+        # inserir streams na partitura
         w = stream.Score(id='mainScore')      # Comando para criar partitura com 2 claves.
         w.insert(0, s1)                       # clave em sol com notas originais
         w.insert(0, s2)                       # clave em sol com notas harmonizadas
+
+        # destruir janela loading
+        newRoot.mainloop()
+        # abrir resultado no music21
         w.show()
+
