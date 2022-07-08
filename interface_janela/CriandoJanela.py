@@ -1,4 +1,3 @@
-# esse método cria uma janela utilizando imagem
 from tkinter import Tk, PhotoImage, Label
 
 from interface_janela.BotoesMenu import BotoesMenu
