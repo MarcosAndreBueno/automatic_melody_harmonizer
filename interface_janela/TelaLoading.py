@@ -2,6 +2,7 @@ from tkinter import Label, Tk, Image, Button
 from PIL import Image, ImageTk, ImageSequence
 import time
 from interface_janela.DimensoesJanela import DimensoesJanela
+from interface_janela.Titulo import Titulo as t
 
 
 class TelaLoading:
@@ -9,6 +10,7 @@ class TelaLoading:
     def loading(self):
         dp = DimensoesJanela()
         newRoot = Tk()
+        t().titulo(newRoot)
         dp.dimensoes(newRoot, 600, 600)               # chamar função dimensões e posição da janela
         img = Image.open(r"arquivos\loading.gif")     # abre arquivo gif pela library PIL
         lbl = Label(newRoot)                          # adicona a uma label

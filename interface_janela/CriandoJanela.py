@@ -1,14 +1,10 @@
 # esse método cria uma janela utilizando imagem
-from tkinter import Tk, PhotoImage, Label, Frame, Button
+from tkinter import Tk, PhotoImage, Label
 
 from interface_janela.BotoesMenu import BotoesMenu
 from interface_janela.DimensoesJanela import DimensoesJanela
-from interface_janela.InserirPartitura import InserirPartitura
-from interface_janela.Instrucoes import Instrucoes
-from interface_janela.Sobre import Sobre
-from interface_janela.StartHarmonizacaoPelaInterface import StartHarmonizacaoPelaInterface
 from interface_janela.TelaAbertura import TelaAbertura
-
+from interface_janela.Titulo import Titulo as t
 
 class CriandoJanela:
     global root
@@ -16,12 +12,12 @@ class CriandoJanela:
         # ====================dimensões e tela abertura====================
         TelaAbertura().tela_abertura()
         root = Tk() # criar a janela abertura (splash screen)
+        t().titulo(root)
 
         # ====================imagem interface====================
         dp = DimensoesJanela()
         img = PhotoImage(file=r"arquivos\menu.png")
         Label(root, image=img).pack()                               # inserir imagem à janela
-        root.title("HARMONIZAÇÃO AUTOMÁTICA DE MELODIAS FFCLRP_2022")
         dp.dimensoes(root, 600, 600)                                # chamar função dimensões e posição da janela
 
         # ====================criando os botões=======================

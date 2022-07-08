@@ -3,11 +3,12 @@ from tkinter import Tk, PhotoImage, Label, Image
 
 from PIL import ImageTk
 from interface_janela.DimensoesJanela import DimensoesJanela
-
+from interface_janela.Titulo import Titulo as t
 
 class TelaAbertura():
     def tela_abertura(self):
         janela_abertura = Tk()
+        t().titulo(janela_abertura)
         janela_abertura.title("HARMONIZAÇÃO AUTOMÁTICA DE MELODIAS FFCLRP_2022")
 
         img = PhotoImage(file="arquivos\logo.png")
