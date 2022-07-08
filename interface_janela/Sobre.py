@@ -8,7 +8,8 @@ class Sobre:
 
         # criar janela
         outraJanela = Toplevel()
-        Label(outraJanela, image=img).pack()
+        lbl = Label(outraJanela, image=img)
+        lbl.pack()
 
         # impedir outras janelas enquanto esta não for fechada
         outraJanela.transient(root)
