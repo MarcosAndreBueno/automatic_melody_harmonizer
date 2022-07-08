@@ -13,6 +13,7 @@ from music21 import stream, note, meter
 
 class Start2:
     def startProgram2(self, partitura):
+        start = time.time() # cronometrar processamento
 
         # ====================Transpor para Dó Maior====================
         # código
@@ -88,15 +89,27 @@ class Start2:
         tg = TrabalhandoGaps2()
         s2 = tg.preenchendo_gaps(s2, listaDuracao)
 
-        # ====================RESULTADO====================
+        # ====================Criar partitura====================
         # inserir streams na partitura
         w = stream.Score(id='mainScore')      # Comando para criar partitura com 2 claves.
         w.insert(0, s1)                       # clave em sol com notas originais
         w.insert(0, s2)                       # clave em sol com notas harmonizadas
 
+        # ====================Abrir partitura após 5 segundos de loading====================
         # destruir janela loading
-        tl = TelaLoading()
-        tl.stop_gif()
+        stop = time.time()                    # stop cronometragem processamento
+        tempoTotal = stop - start             # tempoTotal de processamento
+        if tempoTotal >= 5:
+            tl = TelaLoading()
+            tl.stop_gif()
 
-        # abrir resultado no music21
-        w.show()
+            # abrir partitura no music21
+            w.show()
+        else:
+            esperar = 5-tempoTotal
+            time.sleep(esperar)
+            tl = TelaLoading()
+            tl.stop_gif()
+
+            # abrir partiturano music21
+            w.show()
