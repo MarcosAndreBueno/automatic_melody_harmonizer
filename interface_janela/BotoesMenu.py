@@ -27,7 +27,7 @@ class BotoesMenu:
             fc = InserirPartitura()
             botao = Button(root,
                            image=img,
-                           command=lambda: fc.inserindo(root),
+                           command=lambda: fc.inserindo(),
                            borderwidth=0)
             botao.place(width=165,
                         height=35,

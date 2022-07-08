@@ -1,3 +1,5 @@
+import time
+
 from harmonia_dois.HarmonizarMelodia2 import HarmonizarMelodia2
 from harmonia_dois.ObterLocaisHarmonizacao2 import ObterLocaisHarmonizacao2
 from harmonia_dois.FormulaCompasso2 import FormulaCompasso2
@@ -5,11 +7,12 @@ from harmonia_dois.PitchNumber2 import PitchNumber2
 from harmonia_dois.TrabalhandoGaps2 import TrabalhandoGaps2
 from harmonia_dois.Print2 import Print2
 from harmonia_dois.ReescreverMelodia2 import ReescreverMelodia2
+from interface_janela.TelaLoading import TelaLoading
 from music21 import stream, note, meter
 
 
 class Start2:
-    def startProgram2(self, partitura, newRoot):
+    def startProgram2(self, partitura):
 
         # ====================Transpor para Dó Maior====================
         # código
@@ -38,7 +41,7 @@ class Start2:
             listaObjeto.append(objeto)
             contador = contador
             listaSimbolos.append(contador)
-            if type(n) is note.Note:
+            if type(n) is note.Note:    # se nota
                 notaAtual = n.pitch.name              # nome nota
                 listaNome.append(notaAtual)
                 notaAtual = n.pitch.octave            # oitava
@@ -46,13 +49,13 @@ class Start2:
                 notaAtual = n.duration.quarterLength  # duração
                 listaDuracao.append(notaAtual)
                 listaAlturas = pn.obtendo_pitches(listaAlturas, 1, n)
-            if type(n) is note.Rest:
+            if type(n) is note.Rest:    # se pausa
                 notaAtual = "P"
-                listaNome.append(notaAtual)
-                listaOitava.append(notaAtual)
+                listaNome.append(notaAtual)                             # lista nome recebe P
+                listaOitava.append(notaAtual)                           # lista oitava recebe P
                 notaAtual = n.duration.quarterLength
-                listaDuracao.append(notaAtual)
-                listaAlturas = pn.obtendo_pitches(listaAlturas, 0, n)
+                listaDuracao.append(notaAtual)                          # lista duração recebe duração
+                listaAlturas = pn.obtendo_pitches(listaAlturas, 0, n)   # lista alturas recebe P
             contador += 1
 
         # ====================Fórmula Compasso====================
@@ -92,7 +95,8 @@ class Start2:
         w.insert(0, s2)                       # clave em sol com notas harmonizadas
 
         # destruir janela loading
-        newRoot.mainloop()
+        tl = TelaLoading()
+        tl.stop_gif()
+
         # abrir resultado no music21
         w.show()
-
