@@ -17,16 +17,20 @@ class StartHarmonizacaoPelaInterface:
         # valor se refere ao valor que será passado para essa posição especifica
         filePath = ip.inserindo(None, valor)
 
-        if filePath != " ":
-            # parse na partitura
-            partitura = converter.parse(filePath)
+        # parse na partitura
+        partitura = converter.parse(filePath)
 
+        # começando harmonização
+        inicio = Start2()
+        inicio.startProgram2(partitura)
+
+
+
+        # ==================== PRECISA CONTINUAR TELA LOADING ==========================
+        if filePath != " ":
             # destruir tela menu, construir tela loading.gif
             root.destroy()
             newRoot = Tk()                                 # index = velocidade dos frames
             newRoot.geometry("600x600")
             TelaLoading().play_gif(newRoot, partitura)
 
-            # começando harmonização
-            inicio = Start2()
-            inicio.startProgram2(partitura, newRoot)
