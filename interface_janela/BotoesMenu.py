@@ -1,4 +1,4 @@
-from tkinter import PhotoImage, Button
+from tkinter import PhotoImage, Button, Label
 
 from interface_janela.InserirPartitura import InserirPartitura
 from interface_janela.Instrucoes import Instrucoes
@@ -7,21 +7,20 @@ from interface_janela.StartHarmonizacaoPelaInterface import StartHarmonizacaoPel
 
 
 class BotoesMenu:
-
     def criar(self,number, root,img):
 
         # Instruções
         if number == 1:
-            fc = Instrucoes()
+            listaBotoes = []
             botao = Button(root,
-                            image=img,
-                            command=lambda: fc.tela_instrucao(),  # lambda: botão só ativa com click
-                            borderwidth=0)  # borda = 0
-
-            botao.place(width=155,
+                           image=img,
+                           command=lambda: self.ponte(root, img, listaBotoes), # lambda: botão só ativa com click
+                           borderwidth=0)  # borda = 0
+            listaBotoes.append(botao)      # guarda uma referência do botao
+            botao.place(width=130,
                         height=30,
-                        x=350,
-                        y=205)
+                        x=365,
+                        y=210)
         # Inserir partitura
         if number == 2:
             fc = InserirPartitura()
@@ -38,7 +37,7 @@ class BotoesMenu:
             fc = StartHarmonizacaoPelaInterface()
             botao = Button(root,
                            image=img,
-                           command=lambda: fc.start_harmonizacao_interface(1, root),  # lambda: botão só ativa com click
+                           command=lambda: fc.start_harmonizacao(1, root),  # lambda: botão só ativa com click
                            borderwidth=0)  # borda = 0
             botao.place(width=150,
                         height=25,
@@ -47,13 +46,30 @@ class BotoesMenu:
         # Sobre nós
         if number == 4:
             fc = Sobre()
-            imgTela = PhotoImage(file=r"arquivos\sobre.png") # img Tela
             botao = Button(root,
                             image=img,                      # img Button
-                            command=lambda: fc.tela_sobre(imgTela, root),
+                            command=lambda: fc.tela_sobre(root),
                             borderwidth=0)
 
-            botao.place(width=120,
-                        height=30,
-                        x=355,
-                        y=450)
+            botao.place(width=75,
+                        height=25,
+                        x=391,
+                        y=455)
+
+    # =============== BOTAO INSTRUCOES | GIF | IMPEDIR MULTIPLAS JANELAS INSTRUCOES ===============
+    # ponte para função instruções
+    def ponte(self, root, img, listaBotoes):
+        botao = listaBotoes[0].config(state="disable") # botao desabilitado após o click
+        listaBotoes.clear()                            # preparar lista para próximo click, limpando-a
+        self.recriar(root, img)                        # criar um botão falso para cancelar cor cinza após disabled
+        fc = Instrucoes()                              # chamar método com a gif
+        fc.tela_instrucao(root, botao)
+        self.criar(1, root, img)                       # criar novamente o botão no seu estado original
+    # falso botão instrução (impedir multiplas janelas)
+    def recriar(self, root, img):
+        botao = Label(root,
+                       image=img)
+        botao.place(width=130,
+                    height=30,
+                    x=365,
+                    y=210)

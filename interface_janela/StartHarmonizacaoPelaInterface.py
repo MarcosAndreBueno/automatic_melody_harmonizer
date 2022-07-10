@@ -10,7 +10,7 @@ from music21 import converter
 
 
 class StartHarmonizacaoPelaInterface:
-    def start_harmonizacao_interface(self, valor, root):
+    def start_harmonizacao(self, valor, root):
         # obtendo diretório partitura em string
         ip = InserirPartitura()
 

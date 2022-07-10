@@ -3,9 +3,9 @@ from PIL import ImageTk, Image
 
 
 class Sobre:
-    def tela_sobre(self, img, root):
+    def tela_sobre(self, root):
         outraJanela = Toplevel()
-        outraJanela.geometry("600x600")
+        outraJanela.geometry("600x600+0+0")
         img = PhotoImage(file=r"arquivos/sobre.png")
         lbl = Label(outraJanela, image=img)
         lbl.pack()
