@@ -2,7 +2,7 @@ import time
 
 from harmonia_dois.DestruirLoading import DestruirLoading
 from harmonia_dois.HarmonizarMelodia2 import HarmonizarMelodia2
-from harmonia_dois.ObterLocaisHarmonizacao2 import ObterLocaisHarmonizacao2
+from harmonia_dois.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
 from harmonia_dois.FormulaCompasso2 import FormulaCompasso2
 from harmonia_dois.PitchNumber2 import PitchNumber2
 from harmonia_dois.TrabalhandoGaps2 import TrabalhandoGaps2
@@ -64,8 +64,8 @@ class Start2:
         listaFormulaCompasso = fc.get_formula_compasso2(partitura)
 
         # ====================Obtendo harmonia====================
-        olh = ObterLocaisHarmonizacao2()
-        listaBeatHarmonizar = olh.possiveis_locais(listaFormulaCompasso,listaBeat, listaNome)
+        olh = ObterBeatsHarmonizacao2()
+        listaBeatHarmonizar = olh.beats_escolhidos(listaFormulaCompasso,listaBeat, listaNome)
 
         # ====================Printando====================
         Print2().print_partitura_original2(partitura, listaObjeto, listaSimbolos, listaNome,

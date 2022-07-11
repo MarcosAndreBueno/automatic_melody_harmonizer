@@ -10,6 +10,7 @@ class HarmonizarMelodia2:
     def harmonizando2(self, listaNome, listaAlturas, listaBeatHarmonizar,
                       listaDuracao, listaFormulaCompasso, listaCompasso):
         s2 = stream.Stream()
+        oe = ObterEnarmonia2()
         oh = ObterHarmonias2()
         oo = ObterOitava2()
         ca = CompletarAcorde2()
@@ -24,7 +25,7 @@ class HarmonizarMelodia2:
 
         for i in listaNome:
             # Transforma o pitch em nota para considerar enarmonia. ex: 64(E#) -> vira -> F
-            nomeNota = ObterEnarmonia2().enarmonia(listaAlturas, contador)
+            nomeNota = oe.enarmonia(listaAlturas, contador)
             beatHarmonizar = listaBeatHarmonizar[contador]
             if beatHarmonizar == 1: # se o beat atual for aceito para ser harmonizado
                 altura = listaAlturas[contador]

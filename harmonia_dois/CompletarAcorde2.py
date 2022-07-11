@@ -4,6 +4,7 @@ from music21 import note, chord, meter
 
 class CompletarAcorde2:
     def completando_acorde(self, oitava, altura):
+        # transformando número da nota em nome de nota
         notaAltura = note.Note(altura)            # Ex: note.Note(60)
         notaAtual = notaAltura.pitch.name         # Ex: music21 note 60 = Dó
         listaAcorde = []

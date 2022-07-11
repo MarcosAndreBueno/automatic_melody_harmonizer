@@ -7,8 +7,8 @@
 from harmonia_dois.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
 from harmonia_dois.BuscarBeat2 import BuscarBeat2
 
-class ObterLocaisHarmonizacao2:
-    def possiveis_locais(self, listaFormulaCompasso, listaBeat, listaNome):
+class ObterBeatsHarmonizacao2:
+    def beats_escolhidos(self, listaFormulaCompasso, listaBeat, listaNome):
         contador = 0
         cfc = ContadorFormulaCompasso2()
         bb = BuscarBeat2()
