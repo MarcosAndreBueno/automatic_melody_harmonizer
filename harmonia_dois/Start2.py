@@ -1,5 +1,6 @@
 import time
 
+from harmonia_dois.DestruirLoading import DestruirLoading
 from harmonia_dois.HarmonizarMelodia2 import HarmonizarMelodia2
 from harmonia_dois.ObterLocaisHarmonizacao2 import ObterLocaisHarmonizacao2
 from harmonia_dois.FormulaCompasso2 import FormulaCompasso2
@@ -7,7 +8,6 @@ from harmonia_dois.PitchNumber2 import PitchNumber2
 from harmonia_dois.TrabalhandoGaps2 import TrabalhandoGaps2
 from harmonia_dois.Print2 import Print2
 from harmonia_dois.ReescreverMelodia2 import ReescreverMelodia2
-from interface_janela.TelaLoading import TelaLoading
 from music21 import stream, note, meter
 
 
@@ -97,19 +97,8 @@ class Start2:
 
         # ====================Abrir partitura após 5 segundos de loading====================
         # destruir janela loading
-        stop = time.time()                    # stop cronometragem processamento
-        tempoTotal = stop - start             # tempoTotal de processamento
-        if tempoTotal >= 5:
-            tl = TelaLoading()
-            tl.stop_gif()
+        dl = DestruirLoading()
+        dl.destruir(start)
 
-            # abrir partitura no music21
-            w.show()
-        else:
-            esperar = 5-tempoTotal
-            time.sleep(esperar)
-            tl = TelaLoading()
-            tl.stop_gif()
-
-            # abrir partiturano music21
-            w.show()
+        # abrir partitura no music21
+        w.show()

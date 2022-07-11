@@ -26,19 +26,20 @@ class HarmonizarMelodia2:
             # Transforma o pitch em nota para considerar enarmonia. ex: 64(E#) -> vira -> F
             nomeNota = ObterEnarmonia2().enarmonia(listaAlturas, contador)
             beatHarmonizar = listaBeatHarmonizar[contador]
-            if beatHarmonizar == 1:
+            if beatHarmonizar == 1: # se o beat atual for aceito para ser harmonizado
                 altura = listaAlturas[contador]
                 oitava = oo.oitava()
-
+                # se não for o último acorde
                 if nomeNota != "P" and contador != ultimoAcorde:
                     altura = oh.obter_harmonias(nomeNota, altura, oitava)
+                    # se a nota atual não for acidente ocorrente
                     if altura != "acidente ocorrente":
                         listaAcorde = ca.completando_acorde(oitava, altura)
                         s2 = ca.escrevendo_acorde(s2, contador, formulaAnterior,
                                                   listaAcorde, listaBeatHarmonizar,
                                                   listaDuracao, listaFormulaCompasso,
                                                   listaCompasso, haveraGaps)
-
+                # se for o último acorde, escolher harmonização = tônica da tonalidade
                 if nomeNota != "P" and contador == ultimoAcorde:
                     altura = oh.obter_ultimo_acorde(altura, oitava)
                     if altura != "acidente ocorrente":

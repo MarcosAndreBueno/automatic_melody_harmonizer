@@ -4,9 +4,8 @@ from music21 import note
 
 class ObterHarmonias2:
     def obter_harmonias(self, nomeNota, altura, oitava):
-        # As funções poderiam ser If's, mas deixaria o método HarmonizarMelodia2 menos visual.
+        sh = SortearHarmonia2()
         if nomeNota == "C":  # se a nota for Dó quais serão as possíveis harmonias?
-            sh = SortearHarmonia2()                              # pedindo para sortear números
             sorteio = sh.sortear(1,2)                            # pedindo para trazer a oitava da harmonia_um
             if sorteio == 1:
                 altura = altura+oitava                           # se valor sorteado = 1, nota = 60+(-12) = Dó3
@@ -15,7 +14,6 @@ class ObterHarmonias2:
             return altura
 
         if nomeNota == "D":  # se a nota for Ré quais serão as possíveis harmonias?
-            sh = SortearHarmonia2()
             sorteio = sh.sortear(1,2)
             if sorteio == 1:
                 altura = altura+oitava
@@ -24,7 +22,6 @@ class ObterHarmonias2:
             return altura
 
         if nomeNota == "E":  # se a nota for Mi quais serão as possíveis harmonias?
-            sh = SortearHarmonia2()
             sorteio = sh.sortear(1,2)
             if sorteio == 1:
                 altura = altura+oitava
@@ -33,7 +30,6 @@ class ObterHarmonias2:
             return altura
 
         if nomeNota == "F":  # se a nota for Fá quais serão as possíveis harmonias?
-            sh = SortearHarmonia2()
             sorteio = sh.sortear(1,2)
             if sorteio == 1:
                 altura = altura+oitava
@@ -42,7 +38,6 @@ class ObterHarmonias2:
             return altura
 
         if nomeNota == "G":  # se a nota for Sol quais serão as possíveis harmonias?
-            sh = SortearHarmonia2()
             sorteio = sh.sortear(1,2)
             if sorteio == 1:
                 altura = altura+oitava
@@ -51,7 +46,6 @@ class ObterHarmonias2:
             return altura
 
         if nomeNota == "A":  # se a nota for Lá quais serão as possíveis harmonias?
-            sh = SortearHarmonia2()
             sorteio = sh.sortear(1,2)
             if sorteio == 1:
                 altura = altura+oitava
@@ -60,7 +54,6 @@ class ObterHarmonias2:
             return altura
 
         if nomeNota == "B":  # se a nota for Si quais serão as possíveis harmonias?
-            sh = SortearHarmonia2()
             sorteio = sh.sortear(1,2)
             if sorteio == 1:
                 altura = altura+oitava
