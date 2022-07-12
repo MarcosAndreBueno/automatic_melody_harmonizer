@@ -35,7 +35,7 @@ class CompletarAcorde2:
         return listaAcorde
 
     def escrevendo_acorde(self, s2, contador, formulaAnterior, listaAcorde, listaBeatHarmonizar,
-                          listaDuracao, listaFormulaCompasso, listaCompasso, haveraGaps):
+                          listaDuracao, listaFormulaCompasso, listaCompasso, haveraGaps, listaObjeto):
         hd = ObterDuracao2()
         duracaoNota = hd.harmonizando2(contador, listaBeatHarmonizar, listaDuracao, listaCompasso)
         # designando fórmula de compasso
@@ -55,10 +55,14 @@ class CompletarAcorde2:
                        quarterLength=duracaoNota)  # criando acordes com base nos valores retirados das listas
         c1 = chord.Chord([n1, n2, n3])
 
-        # usar append evita o trabalho de ter bugs que teriam que ser corrigidos com offset
+        # insert especifica posição do acorde na partitura
         if haveraGaps == True:
-            s2.insert(contador, c1)
-        if haveraGaps == False:
+            # nota objeto music21 usaremos o offset da nota harmonizada como index para o acorde.
+            notaAtual = listaObjeto[contador]
+            notaAtual = notaAtual.offset
+            s2.insert(notaAtual, c1)
+        # append não especifica posição, mas adiciona em lista, à frente do último acorde adicionado
+        else:
             s2.append(c1)
         return s2
 
