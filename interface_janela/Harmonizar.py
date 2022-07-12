@@ -9,7 +9,7 @@ from threading import Thread
 from music21 import converter
 
 
-class StartHarmonizacaoPelaInterface:
+class Harmonizar:
     def start_harmonizacao(self, valor, root):
         # obtendo diretório partitura em string
         ip = InserirPartitura()

@@ -31,11 +31,10 @@ class TrabalhandoGaps2:
         gap = self.encontrando_gaps(s2)
         if gap is None:
             return s2
-
-        for x in gap:
-            posicao = int(x.offset)
-            duracao = listaDuracao[posicao]
-            # insertAndShift sobrepõe as pausas onde há gaps
-            s2.insertAndShift(posicao, note.Rest(quarterLength=duracao))
-
+        else:
+            for x in gap:
+                posicao = int(x.offset)
+                duracao = listaDuracao[posicao]
+                # insertAndShift sobrepõe as pausas onde há gaps
+                s2.insertAndShift(posicao, note.Rest(quarterLength=duracao))
         return s2

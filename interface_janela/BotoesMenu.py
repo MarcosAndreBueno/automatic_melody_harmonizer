@@ -3,7 +3,7 @@ from tkinter import PhotoImage, Button, Label
 from interface_janela.InserirPartitura import InserirPartitura
 from interface_janela.Instrucoes import Instrucoes
 from interface_janela.Sobre import Sobre
-from interface_janela.StartHarmonizacaoPelaInterface import StartHarmonizacaoPelaInterface
+from interface_janela.Harmonizar import Harmonizar
 
 
 class BotoesMenu:
@@ -34,7 +34,7 @@ class BotoesMenu:
                         y=280)
         # Start program
         if number == 3:
-            fc = StartHarmonizacaoPelaInterface()
+            fc = Harmonizar()
             botao = Button(root,
                            image=img,
                            command=lambda: fc.start_harmonizacao(1, root),  # lambda: botão só ativa com click

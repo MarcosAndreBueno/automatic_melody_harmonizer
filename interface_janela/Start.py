@@ -5,7 +5,7 @@ from interface_janela.DimensoesJanela import DimensoesJanela
 from interface_janela.TelaAbertura import TelaAbertura
 from interface_janela.Titulo import Titulo as t
 
-class CriandoJanela:
+class Start:
     global root
     def iniciando_janela1(self):
         # ====================dimensões e tela abertura====================

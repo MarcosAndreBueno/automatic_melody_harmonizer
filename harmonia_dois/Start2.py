@@ -83,7 +83,7 @@ class Start2:
         # ====================Reescrevendo Harmonia====================
         hm = HarmonizarMelodia2()
         s2 = hm.harmonizando2(listaNome, listaAlturas, listaBeatHarmonizar, listaDuracao,
-                              listaFormulaCompasso, listaCompasso)
+                              listaFormulaCompasso, listaCompasso, listaObjeto)
 
         # ====================Preenchendo Gaps====================
         tg = TrabalhandoGaps2()

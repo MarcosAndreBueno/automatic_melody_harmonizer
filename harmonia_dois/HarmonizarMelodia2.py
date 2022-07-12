@@ -8,7 +8,7 @@ from music21 import stream, note
 
 class HarmonizarMelodia2:
     def harmonizando2(self, listaNome, listaAlturas, listaBeatHarmonizar,
-                      listaDuracao, listaFormulaCompasso, listaCompasso):
+                      listaDuracao, listaFormulaCompasso, listaCompasso, listaObjeto):
         s2 = stream.Stream()
         oe = ObterEnarmonia2()
         oh = ObterHarmonias2()
@@ -39,7 +39,7 @@ class HarmonizarMelodia2:
                         s2 = ca.escrevendo_acorde(s2, contador, formulaAnterior,
                                                   listaAcorde, listaBeatHarmonizar,
                                                   listaDuracao, listaFormulaCompasso,
-                                                  listaCompasso, haveraGaps)
+                                                  listaCompasso, haveraGaps, listaObjeto)
                 # se for o último acorde, escolher harmonização = tônica da tonalidade
                 if nomeNota != "P" and contador == ultimoAcorde:
                     altura = oh.obter_ultimo_acorde(altura, oitava)
@@ -48,7 +48,7 @@ class HarmonizarMelodia2:
                         s2 = ca.escrevendo_acorde(s2, contador, formulaAnterior,
                                                   listaAcorde, listaBeatHarmonizar,
                                                   listaDuracao, listaFormulaCompasso,
-                                                  listaCompasso, haveraGaps)
+                                                  listaCompasso, haveraGaps, listaObjeto)
 
                     # se pausa, seguir adiante
                 elif nomeNota == "P":
@@ -61,21 +61,3 @@ class HarmonizarMelodia2:
             formulaAnterior = listaFormulaCompasso[contador]
             contador+=1
         return s2
-
-    '''
-    1. Itera lista nome
-    2. Reconhece se o beat é igual a 1
-    3. Se sim, vai para possiveis harmonizações
-    4. Lá dentro sortea uma nota
-    5. Completa os acordes dessa nota
-    6. Duração? 
-    Se divisível por 2 e denominador 4 = 2, denominador 8 = 1
-    se divisível por 3 e denominador 4 = 3, denominador 8 = 1.5
-
-    for i em listaNome:
-        pega nome
-
-        se X faça:
-            harmoniaSorteada = sorteia harmonia
-            duracao = analise formula de comp. e devolve a duração
-    '''
