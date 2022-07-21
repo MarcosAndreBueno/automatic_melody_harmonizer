@@ -20,22 +20,22 @@ class Start:
         dp.dimensoes(root, 600, 600)                                # chamar função dimensões e posição da janela
 
         # ====================criando os botões=======================
-        bm = BotoesMenu()
+        bm = BotoesMenu
+
         # Instruções
         img1 = PhotoImage(file=r"arquivos\botao1.png")
-        botao1 = bm.criar(1,root,img1)
 
         # Inserir partitura
         img2 = PhotoImage(file=r"arquivos\botao2.png")
-        botao2 = bm.criar(2,root,img2)
 
         # Start program
         img3 = PhotoImage(file=r"arquivos\botao3.png")
-        botao3 = bm.criar(3,root,img3)
 
         # Sobre nós
         img4 = PhotoImage(file=r"arquivos\botao4.png")
-        botao4 = bm.criar(4, root, img4)
+
+        botoes = bm(root,img1, img2, img3, img4)
+        botoes.criar()
 
         # ====================Manter janela=======================
         # mantém janela aberta

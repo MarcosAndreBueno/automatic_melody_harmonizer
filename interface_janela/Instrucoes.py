@@ -5,7 +5,7 @@ from PIL import Image, ImageTk, ImageSequence
 
 
 class Instrucoes:
-    def tela_instrucao(self, root, botao):
+    def tela_instrucao(self, root):
         outraJanela = Toplevel(root)
         outraJanela.geometry("600x600+0+0")
         img = Image.open(r"arquivos\instrucoes.gif")  # abre arquivo gif pela library PIL
@@ -13,9 +13,9 @@ class Instrucoes:
         lbl.place(x=0, y=0)
 
         # rodar gif
-        self.play_gif(outraJanela,lbl,img, botao)
+        self.play_gif(outraJanela,lbl,img, root)
 
-    def play_gif(self, outraJanela, lbl, img, botao):
+    def play_gif(self, outraJanela, lbl, img, root):
         booleano = True
         while booleano:                                   # rodar gif enquanto janela estiver aberta
             for img in ImageSequence.Iterator(img):
@@ -25,6 +25,6 @@ class Instrucoes:
                     lbl.config(image=frame)               # inseri na label o frame atual
                 except:
                     outraJanela.destroy()
-                    return botao                          # importante usar return e não break
+                    return root                           # importante usar return e não break
                 finally:
                     outraJanela.update()
