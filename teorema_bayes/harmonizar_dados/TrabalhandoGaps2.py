@@ -1,4 +1,4 @@
-from harmonia_dois.ObterEnarmonia2 import ObterEnarmonia2
+from teorema_bayes.harmonizar_dados.ObterEnarmonia2 import ObterEnarmonia2
 from music21 import note
 
 
@@ -9,7 +9,7 @@ class TrabalhandoGaps2:
         for x in range(0,tamanhoLista):
             nomeNota = ObterEnarmonia2().enarmonia(listaAlturas, x)
             beatHarmonizar = listaBeatHarmonizar[x]
-            if beatHarmonizar == 2 and nomeNota == "P":
+            if beatHarmonizar == 1 and nomeNota == "P":
                 return True
             if beatHarmonizar == 1 and nomeNota != "C" and\
                                        nomeNota != "D" and\

@@ -1,6 +1,3 @@
-from harmonia_dois.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
-
-
 class ObterDuracao2:
     def harmonizando2(self, contador, listaBeatHarmonizar, listaDuracao, listaCompasso):
         # obtendo repetições da mesma fórmula de compasso

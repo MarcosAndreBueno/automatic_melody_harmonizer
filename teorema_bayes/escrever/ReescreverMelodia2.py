@@ -1,5 +1,5 @@
-from harmonia_dois.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
-from music21 import stream, meter, note, key
+from teorema_bayes.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
+from music21 import stream, meter, note
 
 
 class ReescreverMelodia2:

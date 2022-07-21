@@ -4,8 +4,8 @@
     todos compassos ímpares, que podem ser divididos por 3, ignoram 2 beat a cada 1 beat aceito
     se o beat terminar diferente de .0, é ignorado (Ex: 5/4 > beats validos > 1 e 3 > beats invalidos 2,4, 1.5, 3.25 etc)
 '''
-from harmonia_dois.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
-from harmonia_dois.BuscarBeat2 import BuscarBeat2
+from teorema_bayes.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
+from teorema_bayes.extrair_dados.beat.BuscarBeat2 import BuscarBeat2
 
 class ObterBeatsHarmonizacao2:
     def beats_escolhidos(self, listaFormulaCompasso, listaBeat, listaNome):

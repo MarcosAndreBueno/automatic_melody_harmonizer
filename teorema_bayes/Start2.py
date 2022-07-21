@@ -1,28 +1,26 @@
 import time
 
-from harmonia_dois.DestruirLoading import DestruirLoading
-from harmonia_dois.HarmonizarMelodia2 import HarmonizarMelodia2
-from harmonia_dois.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
-from harmonia_dois.FormulaCompasso2 import FormulaCompasso2
-from harmonia_dois.PitchNumber2 import PitchNumber2
-from harmonia_dois.TrabalhandoGaps2 import TrabalhandoGaps2
-from harmonia_dois.Print2 import Print2
-from harmonia_dois.ReescreverMelodia2 import ReescreverMelodia2
-from music21 import stream, note, meter
+from teorema_bayes.DestruirLoading import DestruirLoading
+from teorema_bayes.harmonizar_dados.HarmonizarMelodia2 import HarmonizarMelodia2
+from teorema_bayes.extrair_dados.beat.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
+from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from teorema_bayes.extrair_dados.PitchNumber2 import PitchNumber2
+from teorema_bayes.harmonizar_dados.TrabalhandoGaps2 import TrabalhandoGaps2
+from teorema_bayes.extrair_dados.Print2 import Print2
+from teorema_bayes.escrever.ReescreverMelodia2 import ReescreverMelodia2
+from music21 import stream, note
 
 
 class Start2:
     def startProgram2(self, partitura):
         start = time.time() # cronometrar processamento
 
-        # ====================Transpor para Dó Maior====================
-        # código
-        # código
+        # ====================Definir Escala====================
 
         # ====================Extraindo valores partitura====================
         print('_'*10,'Etapa 1.Copiando todos dados importantes da partitura...')
 
-        # extraindo notas da partitura e colocando em um array
+        # extraindo notas da partitura e colocando em arrays
         contador = 0
         listaNome = []
         listaOitava = []
@@ -71,10 +69,6 @@ class Start2:
         Print2().print_partitura_original2(partitura, listaObjeto, listaSimbolos, listaNome,
                                            listaOitava, listaDuracao,listaBeat, listaCompasso,
                                            listaFormulaCompasso, listaAlturas, listaBeatHarmonizar)
-
-        # ====================Transpor para tonalidade original====================
-        # código
-        # código
 
         # ====================Reescrevendo Melodia====================
         rc = ReescreverMelodia2()

@@ -16,20 +16,15 @@ class BuscarBeat2:
         return listaBeatHarmonizar
 
     def validar_beat_binario(self, contador, listaBeat, listaBeatHarmonizar, listaNome):
-        # se pausa, não harmonizar
+        # se pausa, não harmonizar_dados
         nome = listaNome[contador]
         # binário
         beat = listaBeat[contador]
         beat = str(beat)
         if beat == "1.0" or beat == "3.0":
-            if nome == "P":
-                listaBeatHarmonizar.append(2)
-            else:
-                listaBeatHarmonizar.append(1)
+            listaBeatHarmonizar.append(1) # beat aceito para harmonizar_dados
         else:
-            # se o beat não for harmaonizado, ele ainda sim deve ser considerado
-            # na formação da stream, mesmo que seja para ser ignorado, por isso receberá 0.
-            listaBeatHarmonizar.append(0)
+            listaBeatHarmonizar.append(0) # beat não aceito para harmonizar_dados
         return listaBeatHarmonizar
 
     def validar_beat_ternario(self, contador, listaBeat, listaBeatHarmonizar, listaNome):

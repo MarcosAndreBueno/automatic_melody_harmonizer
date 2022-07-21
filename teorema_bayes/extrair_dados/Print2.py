@@ -1,9 +1,4 @@
-# este método serve apenas para printar textos para facilitar programação e leitura dos dados
-
-# outro comando para print, caso seja necessário
-# print('   '.join(str(i) for i in listaObjeto))
-from types import NoneType, FunctionType
-
+# este método serve apenas para facilitar a leitura dos dados (da melodia) usados para harmonização.
 
 class Print2:
     def print_partitura_original2(self, partitura, listaObjeto, listaSimbolos, listaNome,
@@ -79,7 +74,7 @@ class Print2:
         print('listaBeatPrint music21 nome:        ', listaBeatPrint)
         listaBeatPrint.clear()
 
-        # beats escolhidos para harmonizar
+        # beats escolhidos para harmonizar_dados
         listaBeatHarmonizarPrint = []
         for i in listaBeatHarmonizar:
             objeto = str(i) + "  "

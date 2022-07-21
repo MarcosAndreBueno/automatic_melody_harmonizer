@@ -1,9 +1,10 @@
-from harmonia_dois.CompletarAcorde2 import CompletarAcorde2
-from harmonia_dois.ObterEnarmonia2 import ObterEnarmonia2
-from harmonia_dois.ObterOitava2 import ObterOitava2
-from harmonia_dois.ObterHarmonias2 import ObterHarmonias2
-from harmonia_dois.TrabalhandoGaps2 import TrabalhandoGaps2
-from music21 import stream, note
+from teorema_bayes.harmonizar_dados.CompletarAcorde2 import CompletarAcorde2
+from teorema_bayes.escrever.EscreverAcorde import EscreverAcorde
+from teorema_bayes.harmonizar_dados.ObterEnarmonia2 import ObterEnarmonia2
+from teorema_bayes.harmonizar_dados.ObterOitava2 import ObterOitava2
+from teorema_bayes.harmonizar_dados.ObterHarmonias2 import ObterHarmonias2
+from teorema_bayes.harmonizar_dados.TrabalhandoGaps2 import TrabalhandoGaps2
+from music21 import stream
 
 
 class HarmonizarMelodia2:
@@ -14,6 +15,7 @@ class HarmonizarMelodia2:
         oh = ObterHarmonias2()
         oo = ObterOitava2()
         ca = CompletarAcorde2()
+        ea = EscreverAcorde()
         tg = TrabalhandoGaps2()
         listaAcorde = []
         formulaAnterior = 0
@@ -27,32 +29,27 @@ class HarmonizarMelodia2:
             # Transforma o pitch em nota para considerar enarmonia. ex: 64(E#) -> vira -> F
             nomeNota = oe.enarmonia(listaAlturas, contador)
             beatHarmonizar = listaBeatHarmonizar[contador]
-            if beatHarmonizar == 1: # se o beat atual for aceito para ser harmonizado
+
+            # se o beat atual for aceito para ser harmonizado e não for pausa
+            if beatHarmonizar == 1:
                 altura = listaAlturas[contador]
                 oitava = oo.oitava()
-                # se não for o último acorde
-                if nomeNota != "P" and contador != ultimoAcorde:
-                    altura = oh.obter_harmonias(nomeNota, altura, oitava)
-                    # se a nota atual não for acidente ocorrente
-                    if altura != "acidente ocorrente":
+                altura = oh.obter_harmonias(nomeNota, altura, oitava)
+
+                if altura != "acidente ocorrente" and nomeNota != "P": # ignorar acidentes e pausas
+                    if contador != ultimoAcorde: # se não for o último acorde
                         listaAcorde = ca.completando_acorde(oitava, altura)
-                        s2 = ca.escrevendo_acorde(s2, contador, formulaAnterior,
-                                                  listaAcorde, listaBeatHarmonizar,
-                                                  listaDuracao, listaFormulaCompasso,
-                                                  listaCompasso, haveraGaps, listaObjeto)
-                # se for o último acorde, escolher harmonização = tônica da tonalidade
-                if nomeNota != "P" and contador == ultimoAcorde:
-                    altura = oh.obter_ultimo_acorde(altura, oitava)
-                    if altura != "acidente ocorrente":
-                        listaAcorde = ca.completando_acorde(oitava, altura)
-                        s2 = ca.escrevendo_acorde(s2, contador, formulaAnterior,
+                        s2 = ea.escrevendo_acorde(s2, contador, formulaAnterior,
                                                   listaAcorde, listaBeatHarmonizar,
                                                   listaDuracao, listaFormulaCompasso,
                                                   listaCompasso, haveraGaps, listaObjeto)
 
-                    # se pausa, seguir adiante
-                elif nomeNota == "P":
-                    continue
+                    elif contador == ultimoAcorde: # se último acorde, harmonizar_dados na tônica
+                        listaAcorde = ca.completando_acorde(oitava, altura)
+                        s2 = ea.escrevendo_acorde(s2, contador, formulaAnterior,
+                                                  listaAcorde, listaBeatHarmonizar,
+                                                  listaDuracao, listaFormulaCompasso,
+                                                  listaCompasso, haveraGaps, listaObjeto)
 
             # se o beat for 0, prepara listaAcorde para próximo for
             else:

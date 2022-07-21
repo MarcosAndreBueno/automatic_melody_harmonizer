@@ -21,7 +21,6 @@ class Start:
 
         # ====================criando os botões=======================
         bm = BotoesMenu()
-
         # Instruções
         img1 = PhotoImage(file=r"arquivos\botao1.png")
         botao1 = bm.criar(1,root,img1)

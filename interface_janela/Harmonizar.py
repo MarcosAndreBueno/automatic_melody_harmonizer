@@ -2,7 +2,7 @@ import time
 from tkinter import Tk, Label, PhotoImage
 
 from PIL import Image, ImageTk
-from harmonia_dois.Start2 import Start2
+from teorema_bayes.Start2 import Start2
 from interface_janela.InserirPartitura import InserirPartitura
 from interface_janela.TelaLoading import TelaLoading
 from threading import Thread

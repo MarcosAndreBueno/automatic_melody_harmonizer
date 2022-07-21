@@ -1,4 +1,4 @@
-from harmonia_dois.SortearHarmonia2 import SortearHarmonia2
+from teorema_bayes.harmonizar_dados.SortearHarmonia2 import SortearHarmonia2
 from music21 import note
 
 
