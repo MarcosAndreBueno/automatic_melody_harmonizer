@@ -49,7 +49,7 @@ class BotoesMenu:
         fc3 = Harmonizar()
         botao3 = Button(root,
                        image=img3,
-                       command=lambda: fc3.start_harmonizacao(1, root),  # lambda: botão só ativa com click
+                       command=lambda: fc3.harmonizar(1, root),  # lambda: botão só ativa com click
                        borderwidth=0)  # borda = 0
         botao3.place(width=150,
                     height=25,

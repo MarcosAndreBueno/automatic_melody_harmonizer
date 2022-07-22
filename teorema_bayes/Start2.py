@@ -12,9 +12,8 @@ from music21 import stream, note
 
 
 class Start2:
-    def startProgram2(self, partitura):
+    def startProgram2(self, partitura,tom):
         start = time.time() # cronometrar processamento
-
         # ====================Definir Escala====================
 
         # ====================Extraindo valores partitura====================
