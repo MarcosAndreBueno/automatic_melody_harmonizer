@@ -1,6 +1,7 @@
 import time
 
 from teorema_bayes.DestruirLoading import DestruirLoading
+from teorema_bayes.extrair_dados.Tonalidade2 import Tonalidade2
 from teorema_bayes.harmonizar_dados.HarmonizarMelodia2 import HarmonizarMelodia2
 from teorema_bayes.extrair_dados.beat.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
 from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
@@ -14,8 +15,9 @@ from music21 import stream, note
 class Start2:
     def startProgram2(self, partitura,tom):
         start = time.time() # cronometrar processamento
-        # ====================Definir Escala====================
-
+        # ====================Definir Tom====================
+        tl = Tonalidade2()
+        tl.set_tom(tom)
         # ====================Extraindo valores partitura====================
         print('_'*10,'Etapa 1.Copiando todos dados importantes da partitura...')
 
