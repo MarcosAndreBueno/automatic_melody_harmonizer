@@ -1,11 +1,11 @@
 from music21 import note, chord, meter, scale
-from teorema_bayes.extrair_dados.Tonalidade import Tonalidade
+from teorema_bayes.extrair_dados.Tonalidade import Tonalidade2
 
 
 class CompletarAcorde2:
     def completando_acorde(self, oitava, altura):
         # transformando número da nota em nome de nota
-        tl = Tonalidade()
+        tl = Tonalidade2()
         degrau = tl.degrau_nota(altura)
         listaAcorde = []
         # acorde maior na tonalidade maior -> degraus 1,4,5

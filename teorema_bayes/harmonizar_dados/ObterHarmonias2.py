@@ -1,12 +1,12 @@
 from teorema_bayes.harmonizar_dados.SortearHarmonia2 import SortearHarmonia2
-from teorema_bayes.extrair_dados.Tonalidade import Tonalidade
+from teorema_bayes.extrair_dados.Tonalidade import Tonalidade2
 from music21 import note
 
 
 class ObterHarmonias2:
     def obter_harmonias(self, nomeNota, altura, oitava):
         sh = SortearHarmonia2()
-        tl = Tonalidade()
+        tl = Tonalidade2()
         degrau = tl.degrau_nota(altura)
         match degrau:
             case 1:  # se a nota for Dó quais serão as possíveis harmonias?
