@@ -1,68 +1,72 @@
 from teorema_bayes.harmonizar_dados.SortearHarmonia2 import SortearHarmonia2
+from teorema_bayes.extrair_dados.Tonalidade import Tonalidade
 from music21 import note
 
 
 class ObterHarmonias2:
     def obter_harmonias(self, nomeNota, altura, oitava):
         sh = SortearHarmonia2()
-        if nomeNota == "C":  # se a nota for Dó quais serão as possíveis harmonias?
-            sorteio = sh.sortear(1,2)                            # pedindo para trazer a oitava da harmonia_um
-            if sorteio == 1:
-                altura = altura+oitava                           # se valor sorteado = 1, nota = 60+(-12) = Dó3
-            else:
-                altura = altura+9+oitava                         # se valor sorteado = 2, nota = 60+(-12) = Sol3
-            return altura
+        tl = Tonalidade()
+        degrau = tl.degrau_nota(altura)
+        match degrau:
+            case 1:  # se a nota for Dó quais serão as possíveis harmonias?
+                sorteio = sh.sortear(1,2)                            # pedindo para trazer a oitava da harmonia_um
+                if sorteio == 1:
+                    altura = altura+oitava                           # se valor sorteado = 1, nota = 60+(-12) = Dó3
+                else:
+                    altura = altura+9+oitava                         # se valor sorteado = 2, nota = 60+(-12) = Sol3
+                return altura
 
-        if nomeNota == "D":  # se a nota for Ré quais serão as possíveis harmonias?
-            sorteio = sh.sortear(1,2)
-            if sorteio == 1:
-                altura = altura+oitava
-            else:
-                altura = altura+9+oitava                        # +9 resulta na 6 maior de ré (Ré natural)
-            return altura
+            case 2:  # se a nota for Ré quais serão as possíveis harmonias?
+                sorteio = sh.sortear(1,2)
+                if sorteio == 1:
+                    altura = altura+oitava
+                else:
+                    altura = altura+9+oitava                        # +9 resulta na 6 maior de ré (Ré natural)
+                return altura
 
-        if nomeNota == "E":  # se a nota for Mi quais serão as possíveis harmonias?
-            sorteio = sh.sortear(1,2)
-            if sorteio == 1:
-                altura = altura+oitava
-            else:
-                altura = altura+8+oitava                        # +8 resulta na 6 menor de mi (Dó natural)
-            return altura
+            case 3:  # se a nota for Mi quais serão as possíveis harmonias?
+                sorteio = sh.sortear(1,2)
+                if sorteio == 1:
+                    altura = altura+oitava
+                else:
+                    altura = altura+8+oitava                        # +8 resulta na 6 menor de mi (Dó natural)
+                return altura
 
-        if nomeNota == "F":  # se a nota for Fá quais serão as possíveis harmonias?
-            sorteio = sh.sortear(1,2)
-            if sorteio == 1:
-                altura = altura+oitava
-            else:
-                altura = altura+9+oitava                        # +9 resulta na 6 maior de fá (Ré natural)
-            return altura
+            case 4:  # se a nota for Fá quais serão as possíveis harmonias?
+                sorteio = sh.sortear(1,2)
+                if sorteio == 1:
+                    altura = altura+oitava
+                else:
+                    altura = altura+9+oitava                        # +9 resulta na 6 maior de fá (Ré natural)
+                return altura
 
-        if nomeNota == "G":  # se a nota for Sol quais serão as possíveis harmonias?
-            sorteio = sh.sortear(1,2)
-            if sorteio == 1:
-                altura = altura+oitava
-            else:
-                altura = altura+9+oitava                        # +9 resulta na 6 maior de sol (Mi natural)
-            return altura
+            case 5:  # se a nota for Sol quais serão as possíveis harmonias?
+                sorteio = sh.sortear(1,2)
+                if sorteio == 1:
+                    altura = altura+oitava
+                else:
+                    altura = altura+9+oitava                        # +9 resulta na 6 maior de sol (Mi natural)
+                return altura
 
-        if nomeNota == "A":  # se a nota for Lá quais serão as possíveis harmonias?
-            sorteio = sh.sortear(1,2)
-            if sorteio == 1:
-                altura = altura+oitava
-            else:
-                altura = altura+8+oitava                        # +8 resulta na 6 menor de lá (Fá natural)
-            return altura
+            case 6:  # se a nota for Lá quais serão as possíveis harmonias?
+                sorteio = sh.sortear(1,2)
+                if sorteio == 1:
+                    altura = altura+oitava
+                else:
+                    altura = altura+8+oitava                        # +8 resulta na 6 menor de lá (Fá natural)
+                return altura
 
-        if nomeNota == "B":  # se a nota for Si quais serão as possíveis harmonias?
-            sorteio = sh.sortear(1,2)
-            if sorteio == 1:
-                altura = altura+oitava
-            else:
-                altura = altura+8+oitava                        # +8 resulta na 6 menor de si (Sol natural)
-            return altura
+            case 7:  # se a nota for Si quais serão as possíveis harmonias?
+                sorteio = sh.sortear(1,2)
+                if sorteio == 1:
+                    altura = altura+oitava
+                else:
+                    altura = altura+8+oitava                        # +8 resulta na 6 menor de si (Sol natural)
+                return altura
 
-        else:
-            return "acidente ocorrente"
+            case _:                                                 # case _ funciona como else
+                return "acidente ocorrente"
 
     # encontra a última nota a ser harmonizada
     def posicao_ultimo_acorde(self, listaNome, listaBeatHarmonizar):
