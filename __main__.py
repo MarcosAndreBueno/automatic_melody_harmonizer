@@ -1,6 +1,5 @@
-from teorema_bayes.Start2 import Start2 as st2
 from interface_janela.Start import Start
-from music21 import corpus, stream
+
 print("INICIALIZANDO...")
 
 def main():

@@ -2,7 +2,6 @@
 # ponte para função instruções
 from tkinter import Label
 
-from interface_janela.Instrucoes import Instrucoes
 
 # falso botão instrução (impedir multiplas janelas)
 def recriar(root, img1,img2,img3,img4):

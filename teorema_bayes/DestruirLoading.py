@@ -1,5 +1,5 @@
 import time
-from interface_janela.TelaLoading import TelaLoading
+from interface_janela.janelas.TelaLoading import TelaLoading
 
 class DestruirLoading:
     def destruir(self,start):

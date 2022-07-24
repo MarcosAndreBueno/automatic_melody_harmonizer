@@ -1,10 +1,10 @@
-from tkinter import PhotoImage, Button, Label
+from tkinter import Button
 
-import interface_janela.CongelarMenu as cm
-from interface_janela.InserirPartitura import InserirPartitura
-from interface_janela.Instrucoes import Instrucoes
-from interface_janela.Sobre import Sobre
-from interface_janela.Harmonizar import Harmonizar
+import interface_janela.botoes_menu.CongelarMenu as cm
+from interface_janela.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
+from interface_janela.botoes_menu.botao_instrucoes.Instrucoes import Instrucoes
+from interface_janela.botoes_menu.botao_sobre.Sobre import Sobre
+from interface_janela.botoes_menu.botoes_start.Harmonizar import Harmonizar
 
 
 class BotoesMenu:

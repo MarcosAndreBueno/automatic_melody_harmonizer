@@ -1,11 +1,9 @@
-import time
 from tkinter import messagebox
 
-from PIL import Image, ImageTk
-from interface_janela.BotaoTonalidade import BotaoTonalidade
+from interface_janela.botoes_menu.botoes_start.TelaTonalidade import TelaTonalidade
 from teorema_bayes.Start2 import Start2
-from interface_janela.InserirPartitura import InserirPartitura
-from interface_janela.TelaLoading import TelaLoading
+from interface_janela.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
+from interface_janela.janelas.TelaLoading import TelaLoading
 from threading import Thread
 from music21 import converter
 from teorema_bayes.extrair_dados.Tonalidade2 import Tonalidade2
@@ -19,7 +17,7 @@ class Harmonizar:
 
         if filePath is not None and filePath != "": # usuario já inseriu partitura!
             # inserir tonalidade da melodia que será harmonizada
-            tl = BotaoTonalidade()
+            tl = TelaTonalidade()
             tl.inserir(root)
             # resgatar valor tonalidade inserida
             tl = Tonalidade2()
@@ -27,7 +25,7 @@ class Harmonizar:
             # parse na partitura
             partitura = converter.parse(filePath)
 
-            if tom != None:
+            if tom != "":
                 self.start_harmonizacao(root, partitura, tom)
 
         else: # usuario não inseriu partitura!

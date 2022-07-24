@@ -1,9 +1,7 @@
-import time
-from tkinter import Tk, PhotoImage, Label, Image
+from tkinter import Tk, PhotoImage, Label
 
-from PIL import ImageTk
-from interface_janela.DimensoesJanela import DimensoesJanela
-from interface_janela.Titulo import Titulo as t
+from interface_janela.janelas.DimensoesJanela import DimensoesJanela
+from interface_janela.janelas.Titulo import Titulo as t
 
 class TelaAbertura():
     def tela_abertura(self):

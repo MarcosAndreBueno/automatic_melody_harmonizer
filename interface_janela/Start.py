@@ -1,9 +1,9 @@
 from tkinter import Tk, PhotoImage, Label
 
-from interface_janela.BotoesMenu import BotoesMenu
-from interface_janela.DimensoesJanela import DimensoesJanela
-from interface_janela.TelaAbertura import TelaAbertura
-from interface_janela.Titulo import Titulo as t
+from interface_janela.botoes_menu.BotoesMenu import BotoesMenu
+from interface_janela.janelas.DimensoesJanela import DimensoesJanela
+from interface_janela.janelas.TelaAbertura import TelaAbertura
+from interface_janela.janelas.Titulo import Titulo as t
 
 class Start:
     global root

@@ -1,8 +1,8 @@
-from tkinter import Label, Tk, Image, Button
+from tkinter import Label, Tk, Image
 from PIL import Image, ImageTk, ImageSequence
 import time
-from interface_janela.DimensoesJanela import DimensoesJanela
-from interface_janela.Titulo import Titulo as t
+from interface_janela.janelas.DimensoesJanela import DimensoesJanela
+from interface_janela.janelas.Titulo import Titulo as t
 
 
 class TelaLoading:
