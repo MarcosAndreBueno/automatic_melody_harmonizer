@@ -15,9 +15,6 @@ from music21 import stream, note
 class Start2:
     def startProgram2(self, partitura,tom):
         start = time.time() # cronometrar processamento
-        # ====================Definir Tom====================
-        tl = Tonalidade2()
-        tl.set_tom(tom)
         # ====================Extraindo valores partitura====================
         print('_'*10,'Etapa 1.Copiando todos dados importantes da partitura...')
 

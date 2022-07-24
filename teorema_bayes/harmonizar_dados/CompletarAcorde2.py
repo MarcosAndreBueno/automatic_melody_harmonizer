@@ -9,6 +9,7 @@ class CompletarAcorde2:
         tom = tl.get_tom()
         degrau = tl.degrau_nota(altura, tom)
         listaAcorde = []
+
         # acorde maior na tonalidade maior -> degraus 1,4,5
         if degrau == 1 or degrau == 4 or degrau == 5:
             nota1 = altura+oitava

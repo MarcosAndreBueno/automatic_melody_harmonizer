@@ -1,4 +1,6 @@
 # este método serve apenas para facilitar a leitura dos dados (da melodia) usados para harmonização.
+from teorema_bayes.extrair_dados.Tonalidade2 import Tonalidade2
+
 
 class Print2:
     def print_partitura_original2(self, partitura, listaObjeto, listaSimbolos, listaNome,
@@ -6,6 +8,9 @@ class Print2:
                                   listaFormulaCompasso, listaAlturas, listaBeatHarmonizar):
 
         # print tonalidade
+        tl = Tonalidade2()
+        tom = tl.get_tom()
+        print('Tonalidade inserida pelo usuario: ', tom)
         print('Tonalidade encontrada pelo music21: ', partitura.analyze('key'))
 
         listaObjetoPrint = []

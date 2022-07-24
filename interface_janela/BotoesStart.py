@@ -1,5 +1,7 @@
 from tkinter import Button, SUNKEN, Label
 
+from teorema_bayes.extrair_dados.Tonalidade2 import Tonalidade2
+
 
 class BotoesStart:
     def __init__(self,outraJanela):
@@ -124,10 +126,8 @@ class BotoesStart:
 
     # destrói a janela e devolve a tonalidade inserida ao clicar em ok
     def finalizar(self,outraJanela):
-        # classe Harmonizar chama esse método apenas para resgatar valor na variável tom
-        if outraJanela is not None:
-            outraJanela.destroy()
-        return tom
+        outraJanela.destroy()
+        tl = Tonalidade2()
+        tl.set_tom(tom)
 
-tom = None
 selected_button = None

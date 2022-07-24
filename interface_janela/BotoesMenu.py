@@ -38,7 +38,7 @@ class BotoesMenu:
         fc2 = InserirPartitura()
         botao2 = Button(root,
                        image=img2,
-                       command=lambda: fc2.inserindo(),  # lambda: botão só ativa com click
+                       command=lambda: fc2.set_path(),  # lambda: botão só ativa com click
                        borderwidth=0)
         botao2.place(width=165,
                     height=35,
@@ -49,7 +49,7 @@ class BotoesMenu:
         fc3 = Harmonizar()
         botao3 = Button(root,
                        image=img3,
-                       command=lambda: fc3.harmonizar(1, root),  # lambda: botão só ativa com click
+                       command=lambda: fc3.harmonizar(root),  # lambda: botão só ativa com click
                        borderwidth=0)  # borda = 0
         botao3.place(width=150,
                     height=25,
