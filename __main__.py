@@ -1,14 +1,14 @@
-from interface_janela.Start import Start
+from testes.interface_janela import TesteInterface as ti
 
 print("INICIALIZANDO...")
 
 def main():
-    # iniciar com interface
-    Start().iniciando_janela1()
+    # ti.testeTelaAbertura()
+    # ti.testeTelaPrincipal()
+    # ti.testeTelaTonalidade()
+    # ti.testeTelaLoading()
+    # ti.testeInterfaceInterativa()
 
-
-    # partitura = corpus.parse('testeA', 'Teste_Melodia_8')
-    # st2().startProgram2(partitura)
 
 if __name__ == "__main__":
     main()

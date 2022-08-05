@@ -1,9 +1,9 @@
 from tkinter import messagebox
 
-from interface_janela.botoes_menu.botoes_start.TelaTonalidade import TelaTonalidade
+from janelas_interativas.botoes_menu.botoes_start.TelaTonalidade import TelaTonalidade
 from teorema_bayes.Start2 import Start2
-from interface_janela.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
-from interface_janela.janelas.TelaLoading import TelaLoading
+from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
+from janelas_interativas.janelas.TelaLoading import TelaLoading
 from threading import Thread
 from music21 import converter
 from teorema_bayes.extrair_dados.Tonalidade2 import Tonalidade2
@@ -19,7 +19,7 @@ class Harmonizar:
             # inserir tonalidade da melodia que será harmonizada
             tl = TelaTonalidade()
             tl.inserir(root)
-            # resgatar valor tonalidade inserida
+            # resgatar valor tonalidade que foi inserido
             tl = Tonalidade2()
             tom = tl.get_tom()
             # parse na partitura
@@ -40,8 +40,10 @@ class Harmonizar:
         st = Start2()
 
         # criar tela loading (transitória)
-        t1 = Thread(target=tl.loading)
-        # precisa vírgula e (): a string partitura vira tupla, assim o kwarg não a quebra em vários args
+        t1 = Thread(target=tl.criar)
+
+        # se houver apenas 1 parâmetro fica args=(partitura,)) notar a vírgula ao final:
+        # ela torna a string partitura em uma tupla, assim o kwarg não a quebra em vários args
         t2 = Thread(target=st.startProgram2, args=(partitura,tom))
         t1.start()
         t2.start()

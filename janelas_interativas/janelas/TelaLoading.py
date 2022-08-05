@@ -1,17 +1,19 @@
 from tkinter import Label, Tk, Image
 from PIL import Image, ImageTk, ImageSequence
 import time
-from interface_janela.janelas.DimensoesJanela import DimensoesJanela
-from interface_janela.janelas.Titulo import Titulo as t
+
+from janelas_interativas.janelas.CriarTela import CriarTela
+from janelas_interativas.janelas.EstruturaTelas import EstruturaJanela
 
 
 class TelaLoading:
     # criando função loading na mesma classe da função play_gif para evitar bugs do Tkinter.
-    def loading(self):
-        dp = DimensoesJanela()
+    def criar(self):
         newRoot = Tk()
-        t().titulo(newRoot)
-        dp.dimensoes(newRoot, 600, 600)               # chamar função dimensões e posição da janela
+        ct = CriarTela()
+        ct.dimensaoGrande()
+        ct.criarTelaCentralizada(newRoot)
+
         img = Image.open(r"arquivos\loading.gif")     # abre arquivo gif pela library PIL
         lbl = Label(newRoot)                          # adicona uma label na janela
         lbl.place(x=0, y=0)
