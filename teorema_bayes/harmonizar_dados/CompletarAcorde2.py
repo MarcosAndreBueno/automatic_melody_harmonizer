@@ -1,39 +1,49 @@
-from music21 import note, chord, meter, scale
-from teorema_bayes.extrair_dados.Tonalidade2 import Tonalidade2
+from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
+from teorema_bayes.harmonizar_dados.Escala2 import Escala2
+from teorema_bayes.harmonizar_dados.ObterHarmonias2 import ObterHarmonias2
+from teorema_bayes.harmonizar_dados.ObterOitava2 import ObterOitava2
 
 
 class CompletarAcorde2:
-    def completando_acorde(self, oitava, altura):
-        # transformando número da nota em nome de nota
-        tl = Tonalidade2()
-        tom = tl.get_tom()
-        degrau = tl.degrau_nota(altura, tom)
+    def __init__(self):
+        oo = ObterOitava2()
+        oh = ObterHarmonias2()
+        ho = HarmoniaObtida2()
+        ec = Escala2()
+
+        self.degrau = ec.degrau_nota()
+        self.altura = ho.getAltura()
+        self.harmonia = oh.get()
+        self.oitava = oo.oitava()
+
+    def completando_acorde(self):
+        global listaAcorde
         listaAcorde = []
 
         # acorde maior na tonalidade maior -> degraus 1,4,5
-        if degrau == 1 or degrau == 4 or degrau == 5:
-            nota1 = altura+oitava
-            nota2 = altura+4+oitava
-            nota3 = altura+7+oitava
+        if self.degrau == 1 or self.degrau == 4 or self.degrau == 5:
+            nota1 = self.altura + self.oitava
+            nota2 = self.altura + 4 +self.oitava
+            nota3 = self.altura + 7 +self.oitava
             listaAcorde.append(nota1)
             listaAcorde.append(nota2)
             listaAcorde.append(nota3)
         # acorde menor na tonalidade maior -> degraus 2,3,6
-        elif degrau == 2 or degrau == 3 or degrau == 6:
-            nota1 = altura + oitava
-            nota2 = altura + 3 + oitava
-            nota3 = altura + 7 + oitava
+        elif self.degrau == 2 or self.degrau == 3 or self.degrau == 6:
+            nota1 = self.altura + self.oitava
+            nota2 = self.altura + 3 + self.oitava
+            nota3 = self.altura + 7 + self.oitava
             listaAcorde.append(nota1)
             listaAcorde.append(nota2)
             listaAcorde.append(nota3)
         # acorde diminuto na tonalidade maior -> degrau 7
-        elif degrau == 7:
-            nota1 = altura + oitava
-            nota2 = altura + 3 + oitava
-            nota3 = altura + 6 + oitava
+        elif self.degrau == 7:
+            nota1 = self.altura + self.oitava
+            nota2 = self.altura + 3 + self.oitava
+            nota3 = self.altura + 6 + self.oitava
             listaAcorde.append(nota1)
             listaAcorde.append(nota2)
             listaAcorde.append(nota3)
+
+    def get(self):
         return listaAcorde
-
-

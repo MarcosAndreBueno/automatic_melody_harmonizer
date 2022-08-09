@@ -2,8 +2,7 @@ from music21 import note
 
 
 class ObterEnarmonia2:
-    def enarmonia(self, listaAlturas,contador):
-        altura = listaAlturas[contador]
+    def enarmonia(self, altura):
         if altura != "P":
             n1 = note.Note(altura)
             nomeNota = n1.pitch.name

@@ -1,40 +1,59 @@
+from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
 from teorema_bayes.harmonizar_dados.ObterEnarmonia2 import ObterEnarmonia2
 from music21 import note
 
 
 class TrabalhandoGaps2:
-    def havera_gaps(self, listaBeatHarmonizar, listaNome, listaAlturas):
+    def __init__(self):
+        edp = ExtrairDadosPartitura()
+        bho = BeatsHarmonizarObtidos2()
+
+        self.listaNome = edp.getNome()
+        self.listaAlturas = edp.getAlturas()
+        self.listaDuracao = edp.getDuracao()
+        self.listaBeatHarmonizar = bho.get()
+
+    def havera_gaps(self):
+        global haveraGaps
         haveraGaps = False
-        tamanhoLista = len(listaNome)
+        tamanhoLista = len(self.listaBeatHarmonizar)
         for x in range(0,tamanhoLista):
-            nomeNota = ObterEnarmonia2().enarmonia(listaAlturas, x)
-            beatHarmonizar = listaBeatHarmonizar[x]
+            altura = self.listaAlturas[x]
+            nomeNota = ObterEnarmonia2().enarmonia(altura)
+            beatHarmonizar = self.listaBeatHarmonizar[x]
+
             if beatHarmonizar == 1 and nomeNota == "P":
-                return True
-            if beatHarmonizar == 1 and nomeNota != "C" and\
+                haveraGaps = True
+                break
+            elif beatHarmonizar == 1 and nomeNota != "C" and\
                                        nomeNota != "D" and\
                                        nomeNota != "E" and\
                                        nomeNota != "F" and\
                                        nomeNota != "G" and\
                                        nomeNota != "A" and\
                                        nomeNota != "B":
-                return True
-            if beatHarmonizar == -1 and nomeNota == "P":
-                return True
-        return haveraGaps
+                haveraGaps = True
+                break
+            elif beatHarmonizar == -1 and nomeNota == "P":
+                haveraGaps = True
+                break
 
-    def encontrando_gaps(self, s2):
+    # inserir pausas em todos gaps
+    def preenchendo_gaps(self):
+        ho = HarmoniaObtida2()
+        s2 = ho.getStreamHarmonia()
         gap = s2.findGaps()
-        return gap
-
-    def preenchendo_gaps(self, s2, listaDuracao):
-        gap = self.encontrando_gaps(s2)
         if gap is None:
             return s2
         else:
             for x in gap:
                 posicao = int(x.offset)
-                duracao = listaDuracao[posicao]
+                duracao = self.listaDuracao[posicao]
                 # insertAndShift sobrepõe as pausas onde há gaps
                 s2.insertAndShift(posicao, note.Rest(quarterLength=duracao))
         return s2
+
+    def get(self):
+        return haveraGaps

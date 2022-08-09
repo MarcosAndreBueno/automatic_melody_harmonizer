@@ -1,11 +1,35 @@
 # este método serve apenas para facilitar a leitura dos dados (da melodia) usados para harmonização.
-from teorema_bayes.extrair_dados.Tonalidade2 import Tonalidade2
+
+from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
+from music21 import corpus
+from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
+from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
 
 
 class Print2:
-    def print_partitura_original2(self, partitura, listaObjeto, listaSimbolos, listaNome,
-                                  listaOitava, listaDuracao, listaBeat, listaCompasso,
-                                  listaFormulaCompasso, listaAlturas, listaBeatHarmonizar):
+    def print_partitura_original2(self):
+        edp = ExtrairDadosPartitura()
+        fc = FormulaCompasso2()
+        bho = BeatsHarmonizarObtidos2()
+
+        # get path partitura
+        ip = InserirPartitura()
+        filePath = ip.get_path()
+        partitura = corpus.parse(filePath)
+
+        # get listas
+        listaObjeto = edp.getObjeto()
+        listaSimbolos = edp.getSimbolos()
+        listaNome = edp.getNome()
+        listaAlturas = edp.getAlturas()
+        listaOitava = edp.getOitava()
+        listaDuracao = edp.getDuracao()
+        listaCompasso = edp.getCompasso()
+        listaFormulaCompasso = fc.get()
+        listaBeat = edp.getBeat()
+        listaBeatHarmonizar = bho.get()
 
         # print tonalidade
         tl = Tonalidade2()

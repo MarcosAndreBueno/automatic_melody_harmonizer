@@ -1,37 +1,49 @@
+from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
 from teorema_bayes.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
 from music21 import stream, meter, note
+from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
 
 
 class ReescreverMelodia2:
-    def melodia_original2(self, listaAlturas, listaOitava, listaDuracao, listaFormulaCompasso):
+    def __init__(self):
+        edp = ExtrairDadosPartitura()
+        fc = FormulaCompasso2()
+        ho = HarmoniaObtida2()
+        self.s1 = ho.getStreamMelodia()
+        self.listaAlturas = edp.getAlturas()
+        self.listaOitava = edp.getOitava()
+        self.listaDuracao = edp.getDuracao()
+        self.listaFormulaCompasso = fc.get()
+        self.tamanhoLista = len(self.listaFormulaCompasso)
+
+    def melodia_original2(self):
         contador = 0
-        s1 = stream.Stream()  # lista dos elementos que serão inseridos na partitura.
         cfc = ContadorFormulaCompasso2()
-        # tamanho listaformula
-        tamanhoLista = len(listaFormulaCompasso)
-        # while contador < que tamanhoLista
-        while contador < tamanhoLista:
+
+        while contador < self.tamanhoLista:
             # quantidade = chamar contadorformula
-            quantidade = cfc.repeticoes_compasso(listaFormulaCompasso, tamanhoLista, contador)
+            quantidade = cfc.repeticoes_compasso(contador)
             # formula atual
-            formulaAtual = listaFormulaCompasso[contador]
+            formulaAtual = self.listaFormulaCompasso[contador]
             # set formula atual na stream
             ts = meter.TimeSignature(formulaAtual)
-            s1.append(ts)
+            self.s1.append(ts)
             # iterando fórmulas de compassos
             final = contador+quantidade
             for x in range(contador, final):
-                notaAtual = listaAlturas[x]
+                notaAtual = self.listaAlturas[x]
                 if notaAtual == "P":
-                    d1 = listaDuracao[x]
+                    d1 = self.listaDuracao[x]
                     n1 = note.Rest(quarterLength=d1)
                 else:
-                    pitch = listaAlturas[x]
+                    pitch = self.listaAlturas[x]
                     nota = note.Note(pitch).pitch.name
-                    oitava = str(listaOitava[x])
+                    oitava = str(self.listaOitava[x])
                     nota = nota+oitava
-                    d1 = listaDuracao[x]
+                    d1 = self.listaDuracao[x]
                     n1 = note.Note(nameWithOctave=nota, quarterLength=d1)
-                s1.append(n1)
+                self.s1.append(n1)
             contador+=quantidade
-        return s1
+        ho = HarmoniaObtida2()
+        ho.setStreamMelodia(self.s1)

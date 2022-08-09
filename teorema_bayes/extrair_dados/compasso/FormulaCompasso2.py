@@ -1,10 +1,16 @@
 import numpy
-from music21 import meter, note
+from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
+from music21 import meter, corpus, note
 
 
 class FormulaCompasso2:
-    def get_formula_compasso2(self, partitura):
-        listaFormulaCompasso = []
+    global listaFormulaCompasso
+    listaFormulaCompasso = []
+
+    def extrair(self):
+        ip = InserirPartitura()
+        filePath = ip.get_path()
+        partitura = corpus.parse(filePath)
         for n in partitura.flat:
             if type(n) is meter.TimeSignature:
                 string = str(n)
@@ -14,4 +20,5 @@ class FormulaCompasso2:
             if type(n) is note.Note or type(n) is note.Rest:
                 listaFormulaCompasso.append(formula)
 
+    def get(self):
         return listaFormulaCompasso
