@@ -1,3 +1,5 @@
+from teorema_bayes.escrever.EscreverArmaduraClave import EscreverArmaduraClave
+from teorema_bayes.escrever.EscreverFormulaCompasso import EscreverFormulaCompasso
 from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
 from teorema_bayes.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
 from music21 import stream, meter, note
@@ -16,22 +18,34 @@ class ReescreverMelodia2:
         self.listaDuracao = edp.getDuracao()
         self.listaFormulaCompasso = fc.get()
         self.tamanhoLista = len(self.listaFormulaCompasso)
+        self.listaObjeto = edp.getObjeto()
 
     def melodia_original2(self):
+        # contador para estabelecer index para escrever a fórmula de compasso
         contador = 0
+        ho = HarmoniaObtida2()
+        ho.setContador(contador)
+
         cfc = ContadorFormulaCompasso2()
+        efc = EscreverFormulaCompasso()
+        eac = EscreverArmaduraClave()
 
         while contador < self.tamanhoLista:
+            # contador para estabelecer index para escrever a fórmula de compasso
+            ho.setContador(contador)
+
             # quantidade = chamar contadorformula
             quantidade = cfc.repeticoes_compasso(contador)
-            # formula atual
-            formulaAtual = self.listaFormulaCompasso[contador]
-            # set formula atual na stream
-            ts = meter.TimeSignature(formulaAtual)
-            self.s1.append(ts)
+
             # iterando fórmulas de compassos
             final = contador+quantidade
             for x in range(contador, final):
+                # escrever formula de compasso da posição atual
+                efc.escrever_f_c_melodia()
+
+                # escrever armadura de clave da posição atual
+                eac.escrever_a_c_melodia()
+
                 notaAtual = self.listaAlturas[x]
                 if notaAtual == "P":
                     d1 = self.listaDuracao[x]
@@ -43,7 +57,15 @@ class ReescreverMelodia2:
                     nota = nota+oitava
                     d1 = self.listaDuracao[x]
                     n1 = note.Note(nameWithOctave=nota, quarterLength=d1)
-                self.s1.append(n1)
+                notaAtualOffSet = self.listaObjeto[x]
+                notaAtualOffSet = notaAtualOffSet.offset
+                self.s1.insert(notaAtualOffSet, n1)
+
+                # setContador evita armadura de clave ser reescrita no offSet 0
+                ho.setContador(1)
+
+            # contador+quantidade para evitar reescrever mesmas fórmulas (ex 4/4 -> 4/4)
             contador+=quantidade
+
         ho = HarmoniaObtida2()
         ho.setStreamMelodia(self.s1)

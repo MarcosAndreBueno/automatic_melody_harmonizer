@@ -9,7 +9,7 @@ def main():
     # ti.testeTelaTonalidade()
     # ti.testeTelaLoading()
     # ti.testeInterfaceInterativa()
-     th.testeExtrairDadosPartitura()
+    # th.testeExtrairDadosPartitura()
     # th.testeFormulaCompasso2()
     # th.testeObterBeatsHarmonizacao2()
     # th.testePrint2()
@@ -17,7 +17,7 @@ def main():
     # th.testeHarmonizarMelodia2()
     # th.testeTrabalhandoGaps2()
     # th.testeHarmonizarMelodia2()
-    # th.testeInterfaceHarmonizacao()
+     th.testeInterfaceHarmonizacao()
 
 if __name__ == "__main__":
     main()

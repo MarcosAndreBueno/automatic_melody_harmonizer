@@ -1,3 +1,5 @@
+from teorema_bayes.escrever.EscreverArmaduraClave import EscreverArmaduraClave
+from teorema_bayes.escrever.EscreverFormulaCompasso import EscreverFormulaCompasso
 from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
 from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
 from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
@@ -22,7 +24,6 @@ class EscreverAcorde:
         self.listaObjeto = edp.getObjeto()
         self.listaBeatHarmonizar = bho.get()
         self.listaFormulaCompasso = fc.get()
-        self.contador = ho.getContador()
         self.listaAcorde = ca.get()
         self.objeto = ho.getObjeto()
         self.s2 = ho.getStreamHarmonia()
@@ -32,17 +33,13 @@ class EscreverAcorde:
         od.duracao_harmonia()
         duracao = od.get()
 
-        # escrever a fórmula de compasso
-        if self.contador > 0:
-            formulaAtual = self.listaFormulaCompasso[self.contador]
-            formulaAnterior = self.listaFormulaCompasso[self.contador-1]
-            if formulaAtual != formulaAnterior: # reescrever a fórmula, caso mude
-                ts = meter.TimeSignature(formulaAtual)
-                self.s2.append(ts)
-        else:   # escrever fórmula no primeiro compasso
-            formulaAtual = self.listaFormulaCompasso[self.contador]
-            ts = meter.TimeSignature(formulaAtual)
-            self.s2.insert(self.contador, ts)
+        # escrever formula de compasso da posição atual
+        efc = EscreverFormulaCompasso()
+        efc.escrever_f_c_harmonia()
+
+        # escrever armadura de clave da posição atual
+        eac = EscreverArmaduraClave()
+        eac.escrever_a_c_harmonia()
 
         # formando notas do acorde
         nota1 = self.listaAcorde[0]
@@ -57,9 +54,9 @@ class EscreverAcorde:
         c1 = chord.Chord([n1, n2, n3])
 
         # nota objeto music21 usaremos o offset da melodia harmonizada como index para o acorde.
-        notaAtual = self.objeto
-        notaAtual = notaAtual.offset
-        self.s2.insert(notaAtual, c1)
+        notaAtualOffSet = self.objeto
+        notaAtualOffSet = notaAtualOffSet.offset
+        self.s2.insert(notaAtualOffSet, c1)
 
 
         ho = HarmoniaObtida2()

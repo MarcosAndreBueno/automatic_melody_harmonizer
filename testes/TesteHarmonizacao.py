@@ -2,7 +2,7 @@ from tkinter import Tk
 
 from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
 from janelas_interativas.botoes_menu.botoes_start.TelaTonalidade import TelaTonalidade
-from music21 import stream
+from music21 import stream, corpus, key
 from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
 from teorema_bayes.InterfaceHarmonizacao import InterfaceHarmonizacao
 from teorema_bayes.escrever.ReescreverMelodia2 import ReescreverMelodia2
@@ -86,7 +86,8 @@ def testeReescreverMelodia2():
     reescreverMelodia()
     ho = HarmoniaObtida2()
     s1 = ho.getStreamMelodia()
-    s1.show('t')
+    s1.show()
+
 
 def testeHarmonizarMelodia2():
     inserirTomC()

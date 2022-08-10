@@ -24,6 +24,8 @@ class InterfaceHarmonizacao:
         fc = FormulaCompasso2()
         fc.extrair()
 
+        # ================Extrair Armadura de Clave ==================
+
         # ====================Reescrevendo Melodia====================
         print('_'*10,'Etapa 2.Reescrevendo a melodia de base...')
         s1 = stream.Stream()
@@ -55,8 +57,8 @@ class InterfaceHarmonizacao:
 
         # ====================Abrir partitura após 5 segundos de loading====================
         # destruir janela loading
-        dl = DestruirLoading()
-        dl.destruir(start)
+        # dl = DestruirLoading()
+        # dl.destruir(start)
 
         # abrir partitura no music21
         w.show()
