@@ -1,5 +1,6 @@
+from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
 from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
-from teorema_bayes.harmonizar_dados.Escala2 import Escala2
+from teorema_bayes.extrair_dados.Tonalidade.Escala2 import Escala2
 from teorema_bayes.harmonizar_dados.ObterHarmonias2 import ObterHarmonias2
 from teorema_bayes.harmonizar_dados.ObterOitava2 import ObterOitava2
 
@@ -9,10 +10,12 @@ class CompletarAcorde2:
         oo = ObterOitava2()
         oh = ObterHarmonias2()
         ho = HarmoniaObtida2()
+        edp = ExtrairDadosPartitura()
         ec = Escala2()
 
-        self.degrau = ec.degrau_nota()
-        self.altura = ho.getAltura()
+        self.contador = ho.getContador()
+        self.degrau = ec.get_degrau_from_harmonizar()
+        self.altura = edp.getAlturas(self.contador)
         self.harmonia = oh.get()
         self.oitava = oo.oitava()
 

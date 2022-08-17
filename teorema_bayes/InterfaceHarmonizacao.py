@@ -14,6 +14,7 @@ class InterfaceHarmonizacao:
     def startProgram2(self):
         print('_'*10,'Etapa 1.Copiando todos dados importantes da partitura...')
 
+        controle = time.time()
         start = time.time() # cronometrar processamento
 
         # ====================Extraindo Valores da Partitura====================
@@ -24,9 +25,8 @@ class InterfaceHarmonizacao:
         fc = FormulaCompasso2()
         fc.extrair()
 
-        # ================Extrair Armadura de Clave ==================
-
         # ====================Reescrevendo Melodia====================
+        print("Tempo decorrido:",controle - time.time())
         print('_'*10,'Etapa 2.Reescrevendo a melodia de base...')
         s1 = stream.Stream()
         HarmoniaObtida2().setStreamMelodia(s1)
@@ -34,6 +34,7 @@ class InterfaceHarmonizacao:
         rc.melodia_original2()
 
         # ====================Obtendo Harmonia====================
+        print("Tempo decorrido:",controle - time.time())
         print('_'*10,'Etapa 3.Gerando harmonia !...')
         olh = ObterBeatsHarmonizacao2()
         olh.obter_beats()
@@ -45,6 +46,7 @@ class InterfaceHarmonizacao:
         hm.harmonizando2()
 
         # ====================Criar partitura====================
+        print("Tempo decorrido:",controle - time.time())
         print('_'*10,'Etapa 4.Abrindo resultado no music21...')
         ho = HarmoniaObtida2()
         s1 = ho.getStreamMelodia()
@@ -56,9 +58,9 @@ class InterfaceHarmonizacao:
         w.insert(0, s2)                       # clave em sol com notas harmonizadas
 
         # ====================Abrir partitura após 5 segundos de loading====================
+        print("Tempo decorrido:",controle - time.time())
         # destruir janela loading
-        # dl = DestruirLoading()
-        # dl.destruir(start)
-
+        dl = DestruirLoading()
+        dl.destruir(start)
         # abrir partitura no music21
         w.show()

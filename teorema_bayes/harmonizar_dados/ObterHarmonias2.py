@@ -1,7 +1,7 @@
 from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
 from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
 from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
-from teorema_bayes.harmonizar_dados.Escala2 import Escala2
+from teorema_bayes.extrair_dados.Tonalidade.Escala2 import Escala2
 from teorema_bayes.harmonizar_dados.ObterOitava2 import ObterOitava2
 from teorema_bayes.harmonizar_dados.SortearHarmonia2 import SortearHarmonia2
 
@@ -77,7 +77,7 @@ class ObterHarmonias2:
                     harmonia = self.altura+8+oitava                      # +8 resulta na 6 menor de si (Sol natural)
 
             case _:                                                      # case _ funciona como else
-                harmonia = "AO" # acidente ocorrente
+                harmonia = self.degrau # acidente ocorrente
 
     def get(self):
         return harmonia

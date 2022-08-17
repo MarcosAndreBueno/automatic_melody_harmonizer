@@ -20,5 +20,8 @@ class FormulaCompasso2:
             if type(n) is note.Note or type(n) is note.Rest:
                 listaFormulaCompasso.append(formula)
 
-    def get(self):
-        return listaFormulaCompasso
+    def get(self, contador=None):
+        if contador != None:
+            return listaFormulaCompasso[contador]
+        else:
+            return listaFormulaCompasso

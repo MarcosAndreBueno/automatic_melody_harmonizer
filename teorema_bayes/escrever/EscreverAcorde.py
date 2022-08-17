@@ -25,7 +25,8 @@ class EscreverAcorde:
         self.listaBeatHarmonizar = bho.get()
         self.listaFormulaCompasso = fc.get()
         self.listaAcorde = ca.get()
-        self.objeto = ho.getObjeto()
+        self.contador = ho.getContador()
+        self.objeto = edp.getObjeto(self.contador)
         self.s2 = ho.getStreamHarmonia()
 
     def escrevendo_acorde(self):

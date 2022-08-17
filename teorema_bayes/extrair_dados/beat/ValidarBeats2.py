@@ -1,3 +1,4 @@
+from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
 from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
 from teorema_bayes.extrair_dados.beat import ValidarBeatBinario, ValidarBeatTernario
 from teorema_bayes.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2

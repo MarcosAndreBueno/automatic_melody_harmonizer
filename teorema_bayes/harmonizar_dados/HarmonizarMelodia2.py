@@ -28,26 +28,19 @@ class HarmonizarMelodia2:
         ultimoAcorde = oua.posicao_ultimo_acorde()
 
         for i in self.listaNome:
-            beatHarmonizar = self.listaBeatHarmonizar[contador]
             ho = HarmoniaObtida2()
             ho.setContador(contador)
+            beatHarmonizar = self.listaBeatHarmonizar[contador]
             # se o beat atual for aceito para ser harmonizado
             if beatHarmonizar == 1:
-                altura = self.listaAlturas[contador]
-                ho.setAltura(altura)
-                formulaCompasso = self.listaFormulaCompasso[contador]
-                ho.setFormulaCompasso(formulaCompasso)
                 nomeNota = self.listaNome[contador]
-                ho.setNomeNota(nomeNota)
-                objeto = self.listaObjeto[contador]
-                ho.setObjeto(objeto)
 
                 oh = ObterHarmonias2()
                 oh.obter_harmonias()
                 harmonia = oh.get()
                 ca = CompletarAcorde2()
 
-                if harmonia != "AO" and nomeNota != "P": # ignorar acidentes ocorrentes e pausas
+                if harmonia != None and nomeNota != "P": # ignorar acidentes ocorrentes e pausas
                     if contador != ultimoAcorde: # se não for o último acorde
                         ca.completando_acorde()
                         ea = EscreverAcorde()

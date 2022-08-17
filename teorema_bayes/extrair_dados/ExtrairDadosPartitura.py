@@ -63,8 +63,11 @@ class ExtrairDadosPartitura:
         listaAlturas.append(altura)
         listaObjeto.append(objeto)
 
-    def getNome(self):
-        return listaNome
+    def getNome(self, contador = None):
+        if contador != None:
+            return listaNome[contador]
+        else:
+            return listaNome
 
     def getOitava(self):
         return listaOitava
@@ -81,11 +84,17 @@ class ExtrairDadosPartitura:
     def getSimbolos(self):
         return listaSimbolos
 
-    def getObjeto(self):
-        return listaObjeto
+    def getObjeto(self,contador = None):
+        if contador != None:
+            return listaObjeto[contador]
+        else:
+            return listaObjeto
 
-    def getAlturas(self):
-        return listaAlturas
+    def getAlturas(self,contador = None):
+        if contador != None:
+            return listaAlturas[contador]
+        else:
+            return listaAlturas
 
     def getKeySignature(self):
         return listaKeySign

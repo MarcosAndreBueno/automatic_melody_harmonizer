@@ -1,5 +1,6 @@
 from tkinter import Tk
 
+from hmm_viterbi.Viterbi import Viterbi
 from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
 from janelas_interativas.botoes_menu.botoes_start.TelaTonalidade import TelaTonalidade
 from music21 import stream, corpus, key
@@ -14,9 +15,6 @@ from teorema_bayes.harmonizar_dados.HarmonizarMelodia2 import HarmonizarMelodia2
 from teorema_bayes.harmonizar_dados.TrabalhandoGaps2 import TrabalhandoGaps2
 from testes.Print2 import Print2
 from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
-
-ip = InserirPartitura()
-ip.set_path()
 
 def inserirTomC():
     Tonalidade2().set_tom('C')
@@ -33,7 +31,6 @@ def extrairFormulaCompasso():
     fc = FormulaCompasso2()
     fc.extrair()
 def extrairBeatsHarmonizacao():
-    extrairDadosPartitura()
     extrairFormulaCompasso()
     ObterBeatsHarmonizacao2().obter_beats()
 def reescreverMelodia():
@@ -70,8 +67,19 @@ def testeFormulaCompasso2():
     print(FormulaCompasso2().get())
 
 def testeObterBeatsHarmonizacao2():
+    extrairDadosPartitura()
     extrairBeatsHarmonizacao()
-    print(BeatsHarmonizarObtidos2().get())
+    edp = ExtrairDadosPartitura()
+    bho = BeatsHarmonizarObtidos2()
+    nomeLista = edp.getNome()
+    beatHarm = bho.get()
+    print(nomeLista)
+    for x in range(0, len(nomeLista)):
+        if x == 0: print("[",end='')
+        print("'"+str(beatHarm[x]),end="'")
+        if x == len(nomeLista)-1: print("]",end="\n")
+        else:
+            print(end=', ')
 
 def testePrint2():
     inserirTonalidade()
@@ -79,6 +87,7 @@ def testePrint2():
     extrairFormulaCompasso()
     extrairBeatsHarmonizacao()
     Print2().print_partitura_original2()
+    Viterbi().interface_viterbi()
 
 def testeReescreverMelodia2():
     extrairDadosPartitura()
@@ -87,7 +96,6 @@ def testeReescreverMelodia2():
     ho = HarmoniaObtida2()
     s1 = ho.getStreamMelodia()
     s1.show()
-
 
 def testeHarmonizarMelodia2():
     inserirTomC()
