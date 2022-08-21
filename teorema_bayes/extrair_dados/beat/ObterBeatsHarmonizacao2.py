@@ -13,7 +13,7 @@ from teorema_bayes.extrair_dados.beat.ValidarBeats2 import ValidarBeats2
 class ObterBeatsHarmonizacao2:
     def __init__(self):
         fc = FormulaCompasso2()
-        self.listaFormulaCompasso = fc.get()
+        self.listaFormulaCompasso = fc.get_fc()
         self.tamanhoLista = len(self.listaFormulaCompasso)
 
     def obter_beats(self):

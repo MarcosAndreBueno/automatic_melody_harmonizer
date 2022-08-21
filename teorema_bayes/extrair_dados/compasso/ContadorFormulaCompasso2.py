@@ -4,7 +4,7 @@ from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompass
 class ContadorFormulaCompasso2:
     def __init__(self):
         fc = FormulaCompasso2()
-        self.listaFormulaCompasso = fc.get()
+        self.listaFormulaCompasso = fc.get_fc()
         self.tamanhoLista = len(self.listaFormulaCompasso)
 
     def repeticoes_compasso(self, contador):

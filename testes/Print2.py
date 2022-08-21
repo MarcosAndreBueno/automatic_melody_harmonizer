@@ -27,9 +27,9 @@ class Print2:
         listaOitava = edp.getOitava()
         listaDuracao = edp.getDuracao()
         listaCompasso = edp.getCompasso()
-        listaFormulaCompasso = fc.get()
+        listaFormulaCompasso = fc.get_fc()
         listaBeat = edp.getBeat()
-        listaBeatHarmonizar = bho.get()
+        listaBeatHarmonizar = bho.get_beat_harm()
 
         # print tonalidade
         tl = Tonalidade2()

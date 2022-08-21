@@ -1,18 +1,19 @@
-import testes.TesteInterface as ti
-import testes.TesteHarmonizacao as th
-import testes.TesteHMM as thmm
-from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
-
 print("INICIALIZANDO...")
 
 def main():
-    ip = InserirPartitura()
-    ip.set_path()
+
+    # _____Testes da tela interativa
+    # import testes.TesteInterface as ti
+
     # ti.testeTelaAbertura()
     # ti.testeTelaPrincipal()
     # ti.testeTelaTonalidade()
     # ti.testeTelaLoading()
     # ti.testeInterfaceInterativa()
+
+    # _____Testes harmonização:
+    # import testes.TesteHarmonizacao as th
+
     # th.testeExtrairDadosPartitura()
     # th.testeFormulaCompasso2()
     # th.testeObterBeatsHarmonizacao2()
@@ -20,16 +21,20 @@ def main():
     # th.testeReescreverMelodia2()
     # th.testeHarmonizarMelodia2()
     # th.testeTrabalhandoGaps2()
+    # th.testePrimeiroCompasso()
     # th.testeHarmonizarMelodia2()
     # th.testeInterfaceHarmonizacao()
-    thmm.testeViterbi()
 
-# mudar degraus da harmonização com base na tonalidade inserida
-# botoes
-# resolver viterbi
-# aplicar viterbi
-# sortear com base no viterbi
+    # ___Teste Viterbi
+    # import testes.TesteHMM as thmm
+
+    # thmm.testeViterbi()
+    # thmm.testeHarmonizarMelodia2ComViterbi()
+
+    # ___Testar programa completo:
+    from janelas_interativas.InterfaceInterativa import InterfaceInterativa as ii
+
+    ii().iniciar()
 
 if __name__ == "__main__":
     main()
-

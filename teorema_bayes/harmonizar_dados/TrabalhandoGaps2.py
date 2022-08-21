@@ -13,7 +13,7 @@ class TrabalhandoGaps2:
         self.listaNome = edp.getNome()
         self.listaAlturas = edp.getAlturas()
         self.listaDuracao = edp.getDuracao()
-        self.listaBeatHarmonizar = bho.get()
+        self.listaBeatHarmonizar = bho.get_beat_harm()
 
     def havera_gaps(self):
         global haveraGaps

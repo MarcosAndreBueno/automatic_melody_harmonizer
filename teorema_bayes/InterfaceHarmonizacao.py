@@ -1,7 +1,10 @@
 import time
 
+from hmm_viterbi.Viterbi import Viterbi
 from teorema_bayes.DestruirLoading import DestruirLoading
 from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from teorema_bayes.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
 from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
 from teorema_bayes.harmonizar_dados.HarmonizarMelodia2 import HarmonizarMelodia2
 from teorema_bayes.extrair_dados.beat.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
@@ -23,7 +26,7 @@ class InterfaceHarmonizacao:
 
         # ====================Fórmula de Compasso====================
         fc = FormulaCompasso2()
-        fc.extrair()
+        fc.set_fc()
 
         # ====================Reescrevendo Melodia====================
         print("Tempo decorrido:",controle - time.time())
@@ -33,11 +36,19 @@ class InterfaceHarmonizacao:
         rc = ReescreverMelodia2()
         rc.melodia_original2()
 
+        # ================= Primeiro Compasso Status ==================
+        pc = PrimeiroCompasso()
+        pc.set_compasso_status()    # checar por compassos anacruses e acéfalos
+
         # ====================Obtendo Harmonia====================
         print("Tempo decorrido:",controle - time.time())
         print('_'*10,'Etapa 3.Gerando harmonia !...')
         olh = ObterBeatsHarmonizacao2()
         olh.obter_beats()
+
+        # =====================Aplicando Viterbi ======================
+        vt = Viterbi()
+        vt.interface_viterbi()
 
         # ====================Reescrevendo Harmonia====================
         s2 = stream.Stream()

@@ -8,7 +8,7 @@ from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompass
 class ValidarBeats2:
     def __init__(self):
         fc = FormulaCompasso2()
-        self.listaFormulaCompasso = fc.get()
+        self.listaFormulaCompasso = fc.get_fc()
 
     def validar_beats(self, contador):
         quantidade = ContadorFormulaCompasso2().get()
@@ -28,4 +28,4 @@ class ValidarBeats2:
             contador += 1  # pois o contador estará parado na fórmula de compasso que já foi iterada
 
         bho = BeatsHarmonizarObtidos2()
-        bho.set(listaBeatHarmonizar)
+        bho.set_beat_harm(listaBeatHarmonizar)

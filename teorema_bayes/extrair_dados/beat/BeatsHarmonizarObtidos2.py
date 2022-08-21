@@ -2,8 +2,8 @@ class BeatsHarmonizarObtidos2:
     global listaBeatHarmonizar
     listaBeatHarmonizar = []
 
-    def set(self,newListaBeatHarmonizar):
+    def set_beat_harm(self,newListaBeatHarmonizar):
         listaBeatHarmonizar = newListaBeatHarmonizar
 
-    def get(self):
+    def get_beat_harm(self):
         return listaBeatHarmonizar

@@ -28,22 +28,22 @@ class ExtrairDadosPartitura:
         for n in partitura.flat:
             contador = contador
             if type(n) is note.Note:                # se nota
-                beat = n.beat  # beat
-                compasso = n.measureNumber  # compasso
+                beat = n.beat                       # beat
+                compasso = n.measureNumber          # compasso
                 nome = n.pitch.name                 # nome nota
                 oitava = n.pitch.octave             # oitava
                 duracao = n.duration.quarterLength  # duração
-                altura = pn.obtendo_pitches(n)
-                objeto = n  # objeto music21
+                altura = pn.get_pitch_from_name(n)
+                objeto = n                          # objeto music21
                 self.setNotesAndRests(nome,oitava,duracao,beat,compasso,altura, objeto)
-            elif type(n) is note.Rest:                # se pausa
+            elif type(n) is note.Rest:              # se pausa
                 nome = "P"
                 oitava = "P"
                 duracao = n.duration.quarterLength
-                beat = n.beat  # beat
-                compasso = n.measureNumber  # compasso
+                beat = n.beat                       # beat
+                compasso = n.measureNumber          # compasso
                 altura = "P"
-                objeto = n  # objeto music21
+                objeto = n                          # objeto music21
                 self.setNotesAndRests(nome,oitava,duracao,beat,compasso,altura, objeto)
             elif type(n) is key.KeySignature:
                 keySign = n

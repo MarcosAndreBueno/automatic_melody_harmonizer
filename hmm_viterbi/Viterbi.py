@@ -11,6 +11,8 @@ originalAcordes = ['D','T','D','T','D','D','D','D','T','T','S','S','T','D','T','
 from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
 from teorema_bayes.extrair_dados.Tonalidade.Escala2 import Escala2
 from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from teorema_bayes.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
+
 
 class Viterbi:
     def __init__(self):
@@ -56,27 +58,43 @@ class Viterbi:
         bho = BeatsHarmonizarObtidos2()
         self.notas = edp.getNome()
         self.degrau = ''
-        self.beatHarm = bho.get()
+        self.beatHarm = bho.get_beat_harm()
         self.observado = []
         self.probabilities = []
         self.prob_anterior_ton = []
         self.prob_anterior_sub = []
         self.prob_anterior_dom = []
-        self.ton_anterior = []
-        self.sub_anterior = []
-        self.dom_anterior = []
-        self.resultado = []
+        self.ton_anterior = 0
+        self.sub_anterior = 0
+        self.dom_anterior = 0
 
+        pc = PrimeiroCompasso()
+        self.incomplete_compass = pc.get_compasso_status()
+        self.incomplete_tamanho = pc.get_compass_tamanho()
+
+    # set melodia que será harmonizada
     def estados_observaveis(self):
         for x in range(len(self.notas)):
             beatAt = self.beatHarm[x]
             ec = Escala2()
             self.degrau = ec.get_degrau_from_another()
+
+            # se não
             if beatAt == 1:
                 self.observado.append(self.degrau[x])
+            else:
+                # manter tamanho da lista igual às demais listas
+                self.observado.append(0)
+
+        # em caso de anácruse/acéfalo, ignora compasso inicial inteiro
+        if self.incomplete_compass == True:
+            for x in range(0, self.incomplete_tamanho):
+                resultado.append(0)
 
     def start_probabilities(self):
-        match self.observado[0]:
+        match self.observado[self.incomplete_tamanho]:
+            case 0: # beat não aceito para harmonizar
+                resultado.append(0) # mantém a lista do mesmo tamanho das outras listas extraídas
             case 1:
                 self.ton_anterior = self.p_t * self.p_tc
                 self.sub_anterior = self.p_s * self.p_tc
@@ -105,14 +123,17 @@ class Viterbi:
                 self.ton_anterior = self.p_t * self.p_th
                 self.sub_anterior = self.p_s * self.p_sh
                 self.dom_anterior = self.p_d * self.p_dh
-    
+
         self.probabilities.append((self.ton_anterior, self.sub_anterior, self.dom_anterior))
-    
+        if self.ton_anterior > self.sub_anterior and self.ton_anterior > self.dom_anterior:
+            resultado.append('T')
+        elif self.sub_anterior > self.dom_anterior:
+            resultado.append('S')
+        else:
+            resultado.append('D')
+
     def method_hidden(self):
         hiddenT = hiddenS = hiddenD = ''
-        print("tom:", self.prob_anterior_ton)
-        print("sub:", self.prob_anterior_sub)
-        print("dom:", self.prob_anterior_dom)
         ton1 = self.prob_anterior_ton[0][0]
         ton2 = self.prob_anterior_ton[0][1]
         ton3 = self.prob_anterior_ton[0][2]
@@ -155,20 +176,25 @@ class Viterbi:
         else:
             verbFinal = dom3  # vb->vb
             hiddenD = 'D'
-    
+
         if dterFinal > nounFinal and dterFinal > verbFinal:
-            self.resultado.append(hiddenT)
+            resultado.append(hiddenT)
         elif nounFinal > verbFinal:
-            self.resultado.append(hiddenS)
+            resultado.append(hiddenS)
         else:
-            self.resultado.append(hiddenD)
+            resultado.append(hiddenD)
     
     def interface_viterbi(self):
+        global resultado
+        resultado = []
         self.estados_observaveis()
         self.start_probabilities()
-        for x in range(1, len(self.observado)):
+        # inicia 1 posição após primeiro hidden_state
+        for x in range(self.incomplete_tamanho+1, len(self.observado)):
             self.ton_anterior, self.sub_anterior, self.dom_anterior = self.probabilities[-1]
             match self.observado[x]:
+                case 0: # beat não aceito para harmonizar
+                    resultado.append(0) # mantém a lista do mesmo tamanho das outras listas extraídas
                 case 1:
                     ton1 = self.ton_anterior * self.p_tt * self.p_tc  # probabilidade de ser tônica * continuar tônica * "dó" estar na tônica
                     ton2 = self.sub_anterior * self.p_st * self.p_tc  # probabilidade de ser subdom * continuar subdom * "dó" estar na subdom
@@ -298,27 +324,42 @@ class Viterbi:
 
         # set ultimo hidden state
         if self.ton_anterior > self.sub_anterior and self.ton_anterior > self.dom_anterior:
-            self.resultado.append('T')
+            resultado.append('T')
         elif self.sub_anterior > self.dom_anterior:
-            self.resultado.append('S')
+            resultado.append('S')
         else:
-            self.resultado.append('D')
-        self.print_results()
+            resultado.append('D')
+
+        self.set_observated_states()
+
+    def get_hidden_state(self, contador=None):
+        if contador == None:
+            return resultado
+        else:
+            return resultado[contador]
+
+    def set_observated_states(self):
+        global observated_states
+        observated_states = self.observado
+
+    def get_observated_states(self):
+        return observated_states
+
     
-    def print_results(self):
-        count = 0
-        for p in self.probabilities:
-            print("Notas:", self.notas[count],
-                  "Posição:", count,
-                  "\n"
-                  "Tônica:", p[0],
-                  "\n"
-                  "Subdom:", p[1],
-                  "\n"
-                  "Domina: ", p[2],
-                  "\n")
-            count += 1
-    
-        print("Notas:    ", self.notas)
-        print("Ocultos:  ", self.resultado)
-        print("Notas em degraus:", self.observado)
+    # def print_results(self):
+    #     count = 0
+    #     for p in self.probabilities:
+    #         print("Notas:", self.notas[count],
+    #               "Posição:", count,
+    #               "\n"
+    #               "Tônica:", p[0],
+    #               "\n"
+    #               "Subdom:", p[1],
+    #               "\n"
+    #               "Domina: ", p[2],
+    #               "\n")
+    #         count += 1
+    #
+    #     print("Notas:    ", self.notas)
+    #     print("Ocultos:  ", resultado)
+    #     print("Notas em degraus:", self.observado)

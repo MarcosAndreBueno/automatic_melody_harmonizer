@@ -10,7 +10,7 @@ class UltimoAcorde2:
         bho = BeatsHarmonizarObtidos2()
 
         self.listaNome = edp.getNome()
-        self.listaBeatHarmonizar = bho.get()
+        self.listaBeatHarmonizar = bho.get_beat_harm()
 
     # encontra a última nota a ser harmonizada
     def posicao_ultimo_acorde(self):

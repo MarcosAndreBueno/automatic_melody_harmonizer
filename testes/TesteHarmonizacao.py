@@ -10,14 +10,23 @@ from teorema_bayes.escrever.ReescreverMelodia2 import ReescreverMelodia2
 from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
 from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
 from teorema_bayes.extrair_dados.beat.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
+from teorema_bayes.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
 from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
 from teorema_bayes.harmonizar_dados.HarmonizarMelodia2 import HarmonizarMelodia2
 from teorema_bayes.harmonizar_dados.TrabalhandoGaps2 import TrabalhandoGaps2
 from testes.Print2 import Print2
 from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
 
+ip = InserirPartitura()
+ip.set_path()
+
 def inserirTomC():
-    Tonalidade2().set_tom('C')
+    tonalidade = ""
+    while tonalidade != 'C' and tonalidade != 'D' and tonalidade != 'E' and tonalidade != 'F' \
+        and tonalidade != 'G' and tonalidade != 'A' and tonalidade != 'B':
+        tonalidade = input("Inserir tonalidade: ex: 'C', 'D', 'E', 'F', 'G', 'A' 'B': \n"
+                           "(todos serão considerados tonalidades maiores)\n").upper()
+        Tonalidade2().set_tom(tonalidade)
 
 def inserirTonalidade():
     root = Tk()
@@ -29,7 +38,7 @@ def extrairDadosPartitura():
     edp.extrair()
 def extrairFormulaCompasso():
     fc = FormulaCompasso2()
-    fc.extrair()
+    fc.set_fc()
 def extrairBeatsHarmonizacao():
     extrairFormulaCompasso()
     ObterBeatsHarmonizacao2().obter_beats()
@@ -47,14 +56,37 @@ def haveraGaps():
     tg = TrabalhandoGaps2()
     tg.havera_gaps()
     print(tg.get())
-def mostrarPartitura():
+def incomplete_compass():
+    pc = PrimeiroCompasso()
+    pc.set_compasso_status()
+
+def mostrarPartituraMelodia():
+    ho = HarmoniaObtida2()
+    s1 = ho.getStreamMelodia()
+    s1.show('t')
+    teclado = ''
+    while teclado != "Y" or teclado != "N":
+        teclado = input("Abrir no musescore? Y or N\n").upper()
+        if teclado == 'Y':
+            s1.show()
+        else:
+            pass
+
+def mostrarPartituraHarmmonizada():
     ho = HarmoniaObtida2()
     s1 = ho.getStreamMelodia()
     s2 = ho.getStreamHarmonia()
     w = stream.Score(id='mainScore')  # Comando para criar partitura com 2 claves.
     w.insert(0, s1)  # clave em sol com notas originais
     w.insert(0, s2)  # clave em sol com notas harmonizadas
-    w.show()
+    w.show('t')
+    teclado = ''
+    while input != "Y" or input != "N":
+        teclado = input("Abrir no musescore? Y or N\n").upper()
+        if teclado == 'Y':
+            w.show()
+        elif teclado == 'N':
+            break
 
 def testeExtrairDadosPartitura():
     extrairDadosPartitura()
@@ -64,15 +96,17 @@ def testeExtrairDadosPartitura():
 
 def testeFormulaCompasso2():
     extrairFormulaCompasso()
-    print(FormulaCompasso2().get())
+    print(FormulaCompasso2().get_fc())
 
 def testeObterBeatsHarmonizacao2():
     extrairDadosPartitura()
+    inserirTomC()
+    incomplete_compass()
     extrairBeatsHarmonizacao()
     edp = ExtrairDadosPartitura()
     bho = BeatsHarmonizarObtidos2()
     nomeLista = edp.getNome()
-    beatHarm = bho.get()
+    beatHarm = bho.get_beat_harm()
     print(nomeLista)
     for x in range(0, len(nomeLista)):
         if x == 0: print("[",end='')
@@ -85,6 +119,7 @@ def testePrint2():
     inserirTonalidade()
     extrairDadosPartitura()
     extrairFormulaCompasso()
+    incomplete_compass()
     extrairBeatsHarmonizacao()
     Print2().print_partitura_original2()
     Viterbi().interface_viterbi()
@@ -94,27 +129,35 @@ def testeReescreverMelodia2():
     extrairFormulaCompasso()
     reescreverMelodia()
     ho = HarmoniaObtida2()
-    s1 = ho.getStreamMelodia()
-    s1.show()
-
-def testeHarmonizarMelodia2():
-    inserirTomC()
-    extrairDadosPartitura()
-    extrairFormulaCompasso()
-    HarmonizarMelodia2()
+    mostrarPartituraMelodia()
 
 def testeTrabalhandoGaps2():
     extrairDadosPartitura()
+    incomplete_compass()
     extrairBeatsHarmonizacao()
 
 def testeHarmonizarMelodia2():
     inserirTomC()
+    extrairDadosPartitura()
+    incomplete_compass()
     extrairBeatsHarmonizacao()
+    calcularViterbi()
     reescreverMelodia()
-    haveraGaps()
     escreverHarmonia()
-    mostrarPartitura()
+    mostrarPartituraHarmmonizada()
+
+def testePrimeiroCompasso():
+    extrairDadosPartitura()
+    incomplete_compass()
+    pc = PrimeiroCompasso()
+    print("música começa com compasso anacruse/acéfalo:",pc.get_compasso_status())
+    if pc.get_compasso_status() == True:
+        print("Se True, quantas notas o compasso tem?", pc.get_compass_tamanho())
 
 def testeInterfaceHarmonizacao():
     inserirTomC()
     InterfaceHarmonizacao().startProgram2()
+
+def calcularViterbi():
+    vt = Viterbi()
+    vt.interface_viterbi()

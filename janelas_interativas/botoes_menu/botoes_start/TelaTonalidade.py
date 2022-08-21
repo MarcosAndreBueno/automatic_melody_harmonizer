@@ -12,12 +12,15 @@ class TelaTonalidade:
         ct.dimensaoGrande()
         ct.criarTelaCentralizada(newRoot)
 
-        img = PhotoImage(file="arquivos/botao4.2 tonalidade.png")
+        img = PhotoImage(file="arquivos/botao4.1.png")
         lbl = Label(newRoot, image=img)
         lbl.pack()
 
         # criar botões da aba inserir tonalidade e retornar tonalidade
         bs = BotoesStart(newRoot)
+        imgBotao4 = PhotoImage(file="arquivos/botao4.2.png")
+        # necessário salvar referência da imagem
+        bs.setImg(imgBotao4)
         bs.criar()
 
         # impedir outras janelas enquanto esta não for fechada

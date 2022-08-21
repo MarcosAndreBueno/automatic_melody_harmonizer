@@ -14,7 +14,7 @@ class ObterDuracao2:
         self.listaCompasso = edp.getCompasso()
         self.contador = ho.getContador()
         self.listaDuracao = edp.getDuracao()
-        self.listaBeatHarmonizar = bho.get()
+        self.listaBeatHarmonizar = bho.get_beat_harm()
 
     def duracao_harmonia(self):
         global duracaoFinal

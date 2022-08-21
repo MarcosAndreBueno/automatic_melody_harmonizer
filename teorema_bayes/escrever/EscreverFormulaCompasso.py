@@ -6,7 +6,7 @@ class EscreverFormulaCompasso:
     def __init__(self):
         self.ho = HarmoniaObtida2()
         fc = FormulaCompasso2()
-        self.listaFormulaCompasso = fc.get()
+        self.listaFormulaCompasso = fc.get_fc()
 
     def escrever_f_c(self, stream):
         # escrever a fórmula de compasso

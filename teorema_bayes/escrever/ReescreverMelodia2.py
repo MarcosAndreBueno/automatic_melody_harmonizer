@@ -16,7 +16,7 @@ class ReescreverMelodia2:
         self.listaAlturas = edp.getAlturas()
         self.listaOitava = edp.getOitava()
         self.listaDuracao = edp.getDuracao()
-        self.listaFormulaCompasso = fc.get()
+        self.listaFormulaCompasso = fc.get_fc()
         self.tamanhoLista = len(self.listaFormulaCompasso)
         self.listaObjeto = edp.getObjeto()
 
