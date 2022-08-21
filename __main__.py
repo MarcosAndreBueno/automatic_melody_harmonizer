@@ -1,7 +1,7 @@
 print("INICIALIZANDO...")
 
 def main():
-
+    # ==============================================
     # _____Testes da tela interativa
     # import testes.TesteInterface as ti
 
@@ -11,6 +11,7 @@ def main():
     # ti.testeTelaLoading()
     # ti.testeInterfaceInterativa()
 
+    # ==============================================
     # _____Testes harmonização:
     # import testes.TesteHarmonizacao as th
 
@@ -25,6 +26,7 @@ def main():
     # th.testeHarmonizarMelodia2()
     # th.testeInterfaceHarmonizacao()
 
+    # ==============================================
     # ___Teste Viterbi
     # import testes.TesteHMM as thmm
 

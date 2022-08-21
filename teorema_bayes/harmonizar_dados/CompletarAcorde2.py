@@ -30,7 +30,7 @@ class CompletarAcorde2:
         oitava = oo.get_oitava_harm()
 
         # harmonia obtida por degrau
-        match self.harmoniaDegrau:  # o match é desnecessário por enquanto
+        match self.harmoniaDegrau:  # o match é desnecessário por enquanto, mas vale a pena visualizar
         # caso 1 = estamos no 1 grau ex: C
             case 1:
                 nota1 = fundamental+oitava
