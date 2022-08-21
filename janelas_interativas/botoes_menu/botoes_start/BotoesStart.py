@@ -311,14 +311,17 @@ class BotoesStart:
         self.lbl3.config(text=nome)
 
     def error(self):
-        messagebox.showerror('Desculpa, função indisponível!          ')
+        messagebox.showerror('Erro', 'Desculpe, função indisponível no momento!')
 
     # destrói a janela e devolve a tonalidade inserida ao clicar em ok
     def finalizar(self, newRoot):
-        newRoot.destroy()
-        tl = Tonalidade2()
-        tom = self.nome + self.acidente
-        tl.set_tom(tom)  # por enquanto, modo sempre maior
+        if self.nome != '' and self.acidente != '' and self.modo != '':
+            newRoot.destroy()
+            tl = Tonalidade2()
+            tom = self.nome + self.acidente
+            tl.set_tom(tom)  # por enquanto, modo sempre maior
+        else:
+            messagebox.showerror('Erro', 'Por favor, inserir todos os dados!')
 
     def setImg(self, img):
         global imgBotao4
