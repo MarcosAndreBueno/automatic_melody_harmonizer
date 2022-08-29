@@ -299,11 +299,11 @@ class BotoesStart:
     def setAcidente(self, nome):
         self.lbl2.config(text=nome)
         if self.nome[-1] == '♯':
-            tom = self.acidente = '#'
+            self.acidente = '#'
         elif self.nome[-1] == '♭':
-            tom = self.acidente = 'b'
+            self.acidente = 'b'
         else: # ♮
-            tom = self.acidente = ""
+            self.acidente = "♮"
 
 
     def setModo(self, nome):
@@ -316,6 +316,7 @@ class BotoesStart:
     # destrói a janela e devolve a tonalidade inserida ao clicar em ok
     def finalizar(self, newRoot):
         if self.nome != '' and self.acidente != '' and self.modo != '':
+            self.acidente = ""
             newRoot.destroy()
             tl = Tonalidade2()
             tom = self.nome + self.acidente
