@@ -1,8 +1,10 @@
 '''
     esta classe retorna true se o compasso e o beat forem escolhidos para serem harmonizados
     todos compassos pares aceitam o beat impar e ignoram o beat par
-    todos compassos ímpares, que podem ser divididos por 3, ignoram 2 beat a cada 1 beat aceito
-    se o beat terminar diferente de .0, é ignorado (Ex: 5/4 > beats validos > 1 e 3 > beats invalidos 2,4, 1.5, 3.25 etc)
+    todos compassos ímpares, que podem ser divididos por 3, ignoram 2 beats a cada 1 beat aceito
+    se o beat terminar diferente de .0, é ignorado
+    (Ex: Fórmula de Compasso 5/4 -> beats validos -> 1 e 3 | beats invalidos -> 2,4, 1.5, 3.25 etc)
+    Em suma, os beats fora da cabeça do tempo e que servem de condução serão ignorados.
 '''
 from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
 from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2

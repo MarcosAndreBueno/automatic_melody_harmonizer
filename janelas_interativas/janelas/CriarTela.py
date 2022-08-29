@@ -2,8 +2,6 @@ from janelas_interativas.janelas.EstruturaTelas import EstruturaJanela
 
 
 class CriarTela(EstruturaJanela):
-    # todas variaveis que guardam self.AlgumaCoisa são utilizadas na super classe EstruturaJanela.py
-    global largura, altura
 
     def dimensaoGrande(self):
         self.largura = 600
@@ -28,9 +26,6 @@ class CriarTela(EstruturaJanela):
         self.setTitulo(root)
 
     def criarTelasPos0(self, root):        # telas no canto superior esquerdo da screen do computador
-        largura = self.largura = 600
-        altura = self.altura = 600
-
         # torna a posição do Tkinter o canto superior esquerdo do pc
         posx = self.posx = 0
         posy = self.posy = 0

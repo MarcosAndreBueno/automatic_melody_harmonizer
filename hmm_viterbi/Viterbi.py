@@ -16,6 +16,7 @@ from teorema_bayes.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompas
 
 class Viterbi:
     def __init__(self):
+        # Matriz de transição
         self.p_tt = 0.3333  # tônica para tônica
         self.p_ts = 0.1515  # tônica para subdominante (sempre 0, mas tê-lo ajuda a compreensão do código)
         self.p_td = 0.5152  # tônica para dominante
@@ -26,12 +27,12 @@ class Viterbi:
         self.p_ds = 0.0
         self.p_dd = 0.6364
         
-        # Initial Probabilities
+        # Probabilidade inicial
         self.p_t = 0.8
         self.p_s = 0.0
         self.p_d = 0.2
         
-        # Emission Probabilities
+        # Matriz de Emissão
         self.p_tc = 0.9260  # dó estar na tônica (dó = degrau 1 da tonalidade inserida)
         self.p_tr = 0.3530  # ré estar na tônica (ré = degrau 1 da tonalidade inserida)
         self.p_te = 0.7021  # mi estar na tônica (mi = degrau 1 da tonalidade inserida)

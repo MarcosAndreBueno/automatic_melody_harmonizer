@@ -9,6 +9,7 @@ class Instrucoes:
     def tela_instrucao(self, root):
         outraRoot = Toplevel(root)
         ct = CriarTela()
+        ct.dimensaoGrande()
         ct.criarTelasPos0(outraRoot)
 
         img = Image.open(r"arquivos\instrucoes.gif")  # abre arquivo gif pela library PIL
