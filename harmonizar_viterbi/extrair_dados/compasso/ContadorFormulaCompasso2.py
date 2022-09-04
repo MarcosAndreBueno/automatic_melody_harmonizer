@@ -1,4 +1,4 @@
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
 
 
 class ContadorFormulaCompasso2:

@@ -1,7 +1,7 @@
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
-from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from harmonizar_viterbi.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
 
 
 class ObterDuracao2:

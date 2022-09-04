@@ -1,6 +1,6 @@
 from tkinter import Button, PhotoImage, Label, messagebox
 
-from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
+from harmonizar_viterbi.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
 
 
 class BotoesStart:
@@ -160,7 +160,7 @@ class BotoesStart:
 selected_button = None
 from tkinter import Button, PhotoImage, Label, messagebox
 
-from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
+from harmonizar_viterbi.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
 
 
 class BotoesStart:

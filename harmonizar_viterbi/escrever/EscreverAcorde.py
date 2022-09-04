@@ -1,11 +1,11 @@
-from teorema_bayes.escrever.EscreverArmaduraClave import EscreverArmaduraClave
-from teorema_bayes.escrever.EscreverFormulaCompasso import EscreverFormulaCompasso
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
-from teorema_bayes.harmonizar_dados.CompletarAcorde2 import CompletarAcorde2
-from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
-from teorema_bayes.harmonizar_dados.ObterDuracao2 import ObterDuracao2
+from harmonizar_viterbi.escrever.EscreverArmaduraClave import EscreverArmaduraClave
+from harmonizar_viterbi.escrever.EscreverFormulaCompasso import EscreverFormulaCompasso
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from harmonizar_viterbi.harmonizar_dados.CompletarAcorde2 import CompletarAcorde2
+from harmonizar_viterbi.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
+from harmonizar_viterbi.harmonizar_dados.ObterDuracao2 import ObterDuracao2
 from music21 import note, chord, meter, stream
 
 

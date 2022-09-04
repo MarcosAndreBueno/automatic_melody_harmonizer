@@ -1,6 +1,6 @@
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
 
-
+# Checar se primeiro compasso é anacruse
 class PrimeiroCompasso:
     def __init__(self):
         edp = ExtrairDadosPartitura()

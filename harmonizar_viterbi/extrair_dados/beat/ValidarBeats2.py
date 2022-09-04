@@ -1,8 +1,8 @@
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
-from teorema_bayes.extrair_dados.beat import ValidarBeatBinario, ValidarBeatTernario
-from teorema_bayes.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from harmonizar_viterbi.extrair_dados.beat import ValidarBeatBinario, ValidarBeatTernario
+from harmonizar_viterbi.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
 
 
 class ValidarBeats2:

@@ -1,11 +1,11 @@
 from tkinter import messagebox
 
 from janelas_interativas.botoes_menu.botoes_start.TelaTonalidade import TelaTonalidade
-from teorema_bayes.InterfaceHarmonizacao import InterfaceHarmonizacao
+from harmonizar_viterbi.InterfaceHarmonizacao import InterfaceHarmonizacao
 from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
 from janelas_interativas.janelas.TelaLoading import TelaLoading
 from threading import Thread
-from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
+from harmonizar_viterbi.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
 
 
 class Harmonizar:

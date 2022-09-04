@@ -1,10 +1,10 @@
-from teorema_bayes.escrever.EscreverArmaduraClave import EscreverArmaduraClave
-from teorema_bayes.escrever.EscreverFormulaCompasso import EscreverFormulaCompasso
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
+from harmonizar_viterbi.escrever.EscreverArmaduraClave import EscreverArmaduraClave
+from harmonizar_viterbi.escrever.EscreverFormulaCompasso import EscreverFormulaCompasso
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
 from music21 import stream, meter, note
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
-from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from harmonizar_viterbi.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
 
 
 class ReescreverMelodia2:

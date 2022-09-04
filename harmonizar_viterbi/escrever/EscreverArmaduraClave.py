@@ -1,5 +1,5 @@
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
 
 
 class EscreverArmaduraClave:

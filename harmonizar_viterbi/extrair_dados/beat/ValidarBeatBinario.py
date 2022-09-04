@@ -1,7 +1,7 @@
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
-from teorema_bayes.extrair_dados.Tonalidade.Escala2 import Escala2
-from teorema_bayes.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from harmonizar_viterbi.extrair_dados.Tonalidade.Escala2 import Escala2
+from harmonizar_viterbi.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
 
 edp = ExtrairDadosPartitura()
 listaNome = edp.getNome()
@@ -10,7 +10,7 @@ bho = BeatsHarmonizarObtidos2()
 listaBeatHarmonizar = bho.get_beat_harm()
 listaCompasso = edp.getCompasso()
 
-def validar_beat_ternario(contador):
+def validar_beat_binario(contador):
     beat = listaBeat[contador]
     beat = str(beat)
     edp = ExtrairDadosPartitura()
@@ -28,8 +28,11 @@ def validar_beat_ternario(contador):
         listaBeatHarmonizar.append(0) # ignorar compassos incompletos (anacruse, acéfalos)
 
     else:
-        if beat == "1.0" and nome != 'P' and degrau != None: # ignorar pausas e acidentes ocorrentes
-            listaBeatHarmonizar.append(1)  # beat aceito para harmonizar_dados
+        if nome != 'P' and degrau != None: # ignorar pausas e acidentes ocorrentes
+            if beat == "1.0" or beat == "3.0":
+                listaBeatHarmonizar.append(1)  # beat aceito para harmonizar_dados
+            else:
+                listaBeatHarmonizar.append(0)  # beat não aceito para harmonizar_dados
         else:
             listaBeatHarmonizar.append(0)  # beat não aceito para harmonizar_dados
 

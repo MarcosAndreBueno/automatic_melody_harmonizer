@@ -8,10 +8,10 @@ originalAcordes = ['D','T','D','T','D','D','D','D','T','T','S','S','T','D','T','
 '''
 
 # Transition Probabilities
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.Tonalidade.Escala2 import Escala2
-from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
-from teorema_bayes.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.Tonalidade.Escala2 import Escala2
+from harmonizar_viterbi.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from harmonizar_viterbi.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
 
 
 class Viterbi:

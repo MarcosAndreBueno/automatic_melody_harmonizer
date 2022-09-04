@@ -6,11 +6,11 @@
     (Ex: Fórmula de Compasso 5/4 -> beats validos -> 1 e 3 | beats invalidos -> 2,4, 1.5, 3.25 etc)
     Em suma, os beats fora da cabeça do tempo e que servem de condução serão ignorados.
 '''
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
-from teorema_bayes.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
-from teorema_bayes.extrair_dados.beat.ValidarBeats2 import ValidarBeats2
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from harmonizar_viterbi.extrair_dados.compasso.ContadorFormulaCompasso2 import ContadorFormulaCompasso2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from harmonizar_viterbi.extrair_dados.beat.ValidarBeats2 import ValidarBeats2
 
 class ObterBeatsHarmonizacao2:
     def __init__(self):

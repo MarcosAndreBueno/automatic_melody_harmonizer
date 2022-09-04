@@ -1,6 +1,6 @@
 from music21 import meter
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
-from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from harmonizar_viterbi.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
 
 class EscreverFormulaCompasso:
     def __init__(self):

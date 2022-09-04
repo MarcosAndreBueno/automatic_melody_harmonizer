@@ -1,15 +1,16 @@
 import time
+from tkinter import Tk
 
 from hmm_viterbi.Viterbi import Viterbi
-from teorema_bayes.DestruirLoading import DestruirLoading
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
-from teorema_bayes.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
-from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
-from teorema_bayes.harmonizar_dados.HarmonizarMelodia2 import HarmonizarMelodia2
-from teorema_bayes.extrair_dados.beat.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
-from teorema_bayes.escrever.ReescreverMelodia2 import ReescreverMelodia2
+from harmonizar_viterbi.DestruirLoading import DestruirLoading
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from harmonizar_viterbi.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
+from harmonizar_viterbi.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
+from harmonizar_viterbi.harmonizar_dados.HarmonizarMelodia2 import HarmonizarMelodia2
+from harmonizar_viterbi.extrair_dados.beat.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from harmonizar_viterbi.escrever.ReescreverMelodia2 import ReescreverMelodia2
 from music21 import stream
 
 
@@ -70,8 +71,10 @@ class InterfaceHarmonizacao:
 
         # ====================Abrir partitura após 5 segundos de loading====================
         print("Tempo decorrido:",controle - time.time())
+
         # destruir janela loading
         dl = DestruirLoading()
         dl.destruir(start)
+
         # abrir partitura no music21
         w.show()
