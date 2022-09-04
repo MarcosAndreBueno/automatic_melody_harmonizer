@@ -133,7 +133,7 @@ class Viterbi:
         else:
             resultado.append('D')
 
-    def method_hidden(self):
+    def hidden_method(self):
         hiddenT = hiddenS = hiddenD = ''
         ton1 = self.prob_anterior_ton[0][0]
         ton2 = self.prob_anterior_ton[0][1]
@@ -213,7 +213,7 @@ class Viterbi:
                     self.sub_anterior = max(sub1, sub2, sub3)
                     self.dom_anterior = max(dom1, dom2, dom3)
                     self.probabilities.append((self.ton_anterior, self.sub_anterior, self.dom_anterior))
-                    self.method_hidden()
+                    self.hidden_method()
                 case 2:
                     ton1 = self.ton_anterior * self.p_tt * self.p_tr  # probabilidade de ser tônica * continuar tônica * "ré" estar na tônica
                     ton2 = self.sub_anterior * self.p_st * self.p_tr  # probabilidade de ser subdom * continuar subdom * "ré" estar na subdom
@@ -231,7 +231,7 @@ class Viterbi:
                     self.sub_anterior = max(sub1, sub2, sub3)
                     self.dom_anterior = max(dom1, dom2, dom3)
                     self.probabilities.append((self.ton_anterior, self.sub_anterior, self.dom_anterior))
-                    self.method_hidden()
+                    self.hidden_method()
                 case 3:
                     ton1 = self.ton_anterior * self.p_tt * self.p_te  # probabilidade de ser tônica * continuar tônica * "mi" estar na tônica
                     ton2 = self.sub_anterior * self.p_st * self.p_te  # probabilidade de ser subdom * continuar subdom * "mi" estar na subdom
@@ -249,7 +249,7 @@ class Viterbi:
                     self.sub_anterior = max(sub1, sub2, sub3)
                     self.dom_anterior = max(dom1, dom2, dom3)
                     self.probabilities.append((self.ton_anterior, self.sub_anterior, self.dom_anterior))
-                    self.method_hidden()
+                    self.hidden_method()
                 case 4:
                     ton1 = self.ton_anterior * self.p_tt * self.p_tf  # probabilidade de ser tônica * continuar tônica * "fá" estar na tônica
                     ton2 = self.sub_anterior * self.p_st * self.p_tf  # probabilidade de ser subdom * continuar subdom * "fá" estar na subdom
@@ -267,7 +267,7 @@ class Viterbi:
                     self.sub_anterior = max(sub1, sub2, sub3)
                     self.dom_anterior = max(dom1, dom2, dom3)
                     self.probabilities.append((self.ton_anterior, self.sub_anterior, self.dom_anterior))
-                    self.method_hidden()
+                    self.hidden_method()
                 case 5:
                     ton1 = self.ton_anterior * self.p_tt * self.p_tg  # probabilidade de ser tônica * continuar tônica * "sol" estar na tônica
                     ton2 = self.sub_anterior * self.p_st * self.p_tg  # probabilidade de ser subdom * continuar subdom * "sol" estar na subdom
@@ -285,7 +285,7 @@ class Viterbi:
                     self.sub_anterior = max(sub1, sub2, sub3)
                     self.dom_anterior = max(dom1, dom2, dom3)
                     self.probabilities.append((self.ton_anterior, self.sub_anterior, self.dom_anterior))
-                    self.method_hidden()
+                    self.hidden_method()
                 case 6:
                     ton1 = self.ton_anterior * self.p_tt * self.p_ta  # probabilidade de ser tônica * continuar tônica * "lá" estar na tônica
                     ton2 = self.sub_anterior * self.p_st * self.p_ta  # probabilidade de ser subdom * continuar subdom * "lá" estar na subdom
@@ -303,7 +303,7 @@ class Viterbi:
                     self.sub_anterior = max(sub1, sub2, sub3)
                     self.dom_anterior = max(dom1, dom2, dom3)
                     self.probabilities.append((self.ton_anterior, self.sub_anterior, self.dom_anterior))
-                    self.method_hidden()
+                    self.hidden_method()
                 case 7:
                     ton1 = self.ton_anterior * self.p_tt * self.p_th  # probabilidade de ser tônica * continuar tônica * "si" estar na tônica
                     ton2 = self.sub_anterior * self.p_st * self.p_th  # probabilidade de ser subdom * continuar subdom * "si" estar na subdom
@@ -321,7 +321,7 @@ class Viterbi:
                     self.sub_anterior = max(sub1, sub2, sub3)
                     self.dom_anterior = max(dom1, dom2, dom3)
                     self.probabilities.append((self.ton_anterior, self.sub_anterior, self.dom_anterior))
-                    self.method_hidden()
+                    self.hidden_method()
 
         # set ultimo hidden state
         if self.ton_anterior > self.sub_anterior and self.ton_anterior > self.dom_anterior:

@@ -32,5 +32,5 @@ class UltimoAcorde2:
             altura = altura+oitava
         else:                               # se não, sortear um acorde
             oh = ObterHarmonias2()
-            oh.obter_harmonias(nomeNota, altura, oitava)
+            oh.set_harmonias(nomeNota, altura, oitava)
         return altura

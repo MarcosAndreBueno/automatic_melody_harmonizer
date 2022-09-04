@@ -31,8 +31,8 @@ class EscreverAcorde:
 
     def escrevendo_acorde(self):
         od = ObterDuracao2()
-        od.duracao_harmonia()
-        duracao = od.get()
+        od.set_duracao_harmonia()
+        duracao = od.get_duracao_harmonia()
 
         # escrever formula de compasso da posição atual
         efc = EscreverFormulaCompasso()

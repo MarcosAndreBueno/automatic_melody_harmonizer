@@ -2,7 +2,7 @@ print("INICIALIZANDO...")
 
 def main():
     # =====================================================================
-    # _____Testes da tela interativa
+        # _____Testes da tela interativa
     # import testes.TesteInterface as ti
     # ti.testeTelaAbertura()
     # ti.testeTelaPrincipal()

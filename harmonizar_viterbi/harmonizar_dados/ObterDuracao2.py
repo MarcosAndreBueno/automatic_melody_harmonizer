@@ -16,7 +16,7 @@ class ObterDuracao2:
         self.listaDuracao = edp.getDuracao()
         self.listaBeatHarmonizar = bho.get_beat_harm()
 
-    def duracao_harmonia(self):
+    def set_duracao_harmonia(self):
         global duracaoFinal
         # obtendo repetições da mesma fórmula de compasso
         tamanhoLista = len(self.listaBeatHarmonizar)
@@ -35,5 +35,5 @@ class ObterDuracao2:
             duracaoFinal += duracao # duracao acorde = soma das duracoes entre dois beatHarmonizar=1
             controle+=1
 
-    def get(self):
+    def get_duracao_harmonia(self):
         return duracaoFinal

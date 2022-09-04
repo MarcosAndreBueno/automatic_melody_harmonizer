@@ -33,7 +33,8 @@ class InterfaceHarmonizacao:
         print("Tempo decorrido:",controle - time.time())
         print('_'*10,'Etapa 2.Reescrevendo a melodia de base...')
         s1 = stream.Stream()
-        HarmoniaObtida2().setStreamMelodia(s1)
+        ho = HarmoniaObtida2()
+        ho.setStreamMelodia(s1)
         rc = ReescreverMelodia2()
         rc.melodia_original2()
 
@@ -53,7 +54,7 @@ class InterfaceHarmonizacao:
 
         # ====================Reescrevendo Harmonia====================
         s2 = stream.Stream()
-        HarmoniaObtida2().setStreamHarmonia(s2)
+        ho.setStreamHarmonia(s2)
         hm = HarmonizarMelodia2()
         hm.harmonizando2()
 

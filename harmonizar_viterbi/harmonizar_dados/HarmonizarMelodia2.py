@@ -23,12 +23,9 @@ class HarmonizarMelodia2:
         self.listaObjeto = edp.getObjeto()
 
     def harmonizando2(self):
-        oua = UltimoAcorde2()
         contador = 0
 
         # se nota final fizer parte da tríade da tônica, força harmonização na tônica.
-        ultimoAcorde = oua.posicao_ultimo_acorde()
-
         for i in self.listaNome:
             ho = HarmoniaObtida2()
             ho.setContador(contador)
@@ -39,12 +36,22 @@ class HarmonizarMelodia2:
 
                 # obter fundamental da harmonia
                 oh = ObterHarmonias2()
-                oh.obter_harmonias()
+                oh.set_harmonias()
                 harmoniaDegrau = oh.get_harmonia_from_degrau()
 
                 # ignorar acidentes ocorrentes e pausas
                 if harmoniaDegrau != None and nomeNota != "P":
                     ca = CompletarAcorde2()
+                    ca.completando_acorde()
+                    ea = EscreverAcorde()
+                    ea.escrevendo_acorde()
+
+                    '''
+                    Trabalhar últimoAcorde na tônica
+                    
+                    oua = UltimoAcorde2()
+                    ultimoAcorde = oua.posicao_ultimo_acorde()
+                    
                     if contador != ultimoAcorde: # se não for o último acorde
                         ca.completando_acorde()
                         ea = EscreverAcorde()
@@ -53,5 +60,7 @@ class HarmonizarMelodia2:
                         ca.completando_acorde()
                         ea = EscreverAcorde()
                         ea.escrevendo_acorde()
+                    '''
+
 
             contador+=1

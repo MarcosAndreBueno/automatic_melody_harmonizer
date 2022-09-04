@@ -18,7 +18,7 @@ class ObterHarmonias2:
         self.listaAlturas = edp.getAlturas()
         self.listaBeatHarmonizar = bho.get_beat_harm()
 
-    def obter_harmonias(self):
+    def set_harmonias(self):
         global harmoniaDegrau
 
         # retornar estados ocultos para harmonização

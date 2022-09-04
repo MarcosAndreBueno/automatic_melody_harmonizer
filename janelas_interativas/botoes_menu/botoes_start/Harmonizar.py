@@ -16,8 +16,8 @@ class Harmonizar:
 
         if filePath is not None and filePath != "": # usuario já inseriu partitura!
             # inserir tonalidade da melodia que será harmonizada
-            tl = TelaTonalidade()
-            tl.inserir(root)
+            tt = TelaTonalidade()
+            tt.inserir(root)
             # resgatar valor tonalidade que foi inserido
             tl = Tonalidade2()
             tom = tl.get_tom()
