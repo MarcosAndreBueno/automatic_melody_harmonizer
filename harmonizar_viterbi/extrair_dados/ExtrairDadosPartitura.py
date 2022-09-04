@@ -1,6 +1,7 @@
 from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
-from teorema_bayes.extrair_dados.PitchNumber2 import PitchNumber2
-from music21 import note, corpus, key
+from harmonizar_viterbi.extrair_dados.PitchNumber2 import PitchNumber2
+from music21 import note, corpus, key, converter
+
 
 
 class ExtrairDadosPartitura:
@@ -19,7 +20,7 @@ class ExtrairDadosPartitura:
     def extrair(self):
         ip = InserirPartitura()
         filePath = ip.get_path()
-        partitura = corpus.parse(filePath)
+        partitura = converter.parse(filePath)
 
         pn = PitchNumber2()
         contador = 0
@@ -33,7 +34,7 @@ class ExtrairDadosPartitura:
                 nome = n.pitch.name                 # nome nota
                 oitava = n.pitch.octave             # oitava
                 duracao = n.duration.quarterLength  # duração
-                altura = pn.get_pitch_from_name(n)
+                altura = pn.get_pitch_from_object(n)
                 objeto = n                          # objeto music21
                 self.setNotesAndRests(nome,oitava,duracao,beat,compasso,altura, objeto)
             elif type(n) is note.Rest:              # se pausa

@@ -1,9 +1,9 @@
 from music21 import note, scale
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.PitchNumber2 import PitchNumber2
-from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
-from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
-from teorema_bayes.harmonizar_dados.ObterOitava2 import ObterOitava2
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.PitchNumber2 import PitchNumber2
+from harmonizar_viterbi.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
+from harmonizar_viterbi.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
+from harmonizar_viterbi.harmonizar_dados.ObterOitava2 import ObterOitava2
 
 
 class Escala2:
@@ -43,14 +43,16 @@ class Escala2:
 
     # retorna apenas o pitch, sem a oitava
     def get_pitch_from_degrau(self,degrau):
+        ho = HarmoniaObtida2()
+        contador = ho.getContador()
         if degrau != 'P':
             sc = scale.MajorScale(self.tom)
             nome = sc.pitchFromDegree(degrau).name
             oo = ObterOitava2()
-            oitava = oo.get_oitava_from_actual_object()
+            oitava = oo.get_oitava_from_actual_object(contador)
             name = note.Note(nome+str(oitava))
             pn = PitchNumber2()
-            altura = pn.get_pitch_from_name(name)
+            altura = pn.get_pitch_from_object(name)
             return altura
         else:
             return 'P'

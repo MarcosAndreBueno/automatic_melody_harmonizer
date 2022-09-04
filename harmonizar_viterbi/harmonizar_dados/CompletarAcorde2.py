@@ -1,10 +1,10 @@
 from music21 import scale
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
-from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
-from teorema_bayes.extrair_dados.Tonalidade.Escala2 import Escala2
-from teorema_bayes.harmonizar_dados.ObterHarmonias2 import ObterHarmonias2
-from teorema_bayes.harmonizar_dados.ObterOitava2 import ObterOitava2
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
+from harmonizar_viterbi.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
+from harmonizar_viterbi.extrair_dados.Tonalidade.Escala2 import Escala2
+from harmonizar_viterbi.harmonizar_dados.ObterHarmonias2 import ObterHarmonias2
+from harmonizar_viterbi.harmonizar_dados.ObterOitava2 import ObterOitava2
 
 
 class CompletarAcorde2:
@@ -27,7 +27,7 @@ class CompletarAcorde2:
 
         # return oitava escolhida para harmonizar
         oo = ObterOitava2()
-        oitava = oo.get_oitava_harm()
+        oitava = oo.get_oitava_harm(fundamental, self.contador)
 
         # harmonia obtida por degrau
         match self.harmoniaDegrau:  # o match é desnecessário por enquanto, mas vale a pena visualizar

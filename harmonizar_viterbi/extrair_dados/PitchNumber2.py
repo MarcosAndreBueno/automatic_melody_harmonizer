@@ -2,7 +2,7 @@ from music21 import pitch, note
 
 
 class PitchNumber2:
-    def get_pitch_from_name(self,name):
+    def get_pitch_from_object(self,name):
         name = name.pitches                 # ex: object music21.pitch.Pitch C4
         name = str(name)
         start = 21
