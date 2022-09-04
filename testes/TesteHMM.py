@@ -1,13 +1,13 @@
 from hmm_viterbi.Viterbi import Viterbi
 from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
-from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
-from teorema_bayes.extrair_dados.beat.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
-from teorema_bayes.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
+from harmonizar_viterbi.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from harmonizar_viterbi.extrair_dados.beat.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
+from harmonizar_viterbi.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
 from testes import TesteHarmonizacao
 
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
 th = TesteHarmonizacao
 
 def calcularViterbi():

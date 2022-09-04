@@ -1,11 +1,11 @@
 # este método serve apenas para facilitar a leitura dos dados (da melodia) usados para harmonização.
 
 from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
-from music21 import corpus
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
-from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from music21 import corpus, converter
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
+from harmonizar_viterbi.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
 
 
 class Print2:
@@ -17,7 +17,7 @@ class Print2:
         # get path partitura
         ip = InserirPartitura()
         filePath = ip.get_path()
-        partitura = corpus.parse(filePath)
+        partitura = converter.parse(filePath)
 
         # get listas
         listaObjeto = edp.getObjeto()

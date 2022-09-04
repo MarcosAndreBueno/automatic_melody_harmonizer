@@ -4,18 +4,18 @@ from hmm_viterbi.Viterbi import Viterbi
 from janelas_interativas.botoes_menu.botao_inserir.InserirPartitura import InserirPartitura
 from janelas_interativas.botoes_menu.botoes_start.TelaTonalidade import TelaTonalidade
 from music21 import stream, corpus, key
-from teorema_bayes.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
-from teorema_bayes.InterfaceHarmonizacao import InterfaceHarmonizacao
-from teorema_bayes.escrever.ReescreverMelodia2 import ReescreverMelodia2
-from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
-from teorema_bayes.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
-from teorema_bayes.extrair_dados.beat.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
-from teorema_bayes.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
-from teorema_bayes.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
-from teorema_bayes.harmonizar_dados.HarmonizarMelodia2 import HarmonizarMelodia2
-from teorema_bayes.harmonizar_dados.TrabalhandoGaps2 import TrabalhandoGaps2
+from harmonizar_viterbi.extrair_dados.ExtrairDadosPartitura import ExtrairDadosPartitura
+from harmonizar_viterbi.InterfaceHarmonizacao import InterfaceHarmonizacao
+from harmonizar_viterbi.escrever.ReescreverMelodia2 import ReescreverMelodia2
+from harmonizar_viterbi.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
+from harmonizar_viterbi.extrair_dados.beat.BeatsHarmonizarObtidos2 import BeatsHarmonizarObtidos2
+from harmonizar_viterbi.extrair_dados.beat.ObterBeatsHarmonizacao2 import ObterBeatsHarmonizacao2
+from harmonizar_viterbi.extrair_dados.compasso.PrimeiroCompasso import PrimeiroCompasso
+from harmonizar_viterbi.harmonizar_dados.HarmoniaObtida2 import HarmoniaObtida2
+from harmonizar_viterbi.harmonizar_dados.HarmonizarMelodia2 import HarmonizarMelodia2
+from harmonizar_viterbi.harmonizar_dados.TrabalhandoGaps2 import TrabalhandoGaps2
 from testes.Print2 import Print2
-from teorema_bayes.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
+from harmonizar_viterbi.extrair_dados.compasso.FormulaCompasso2 import FormulaCompasso2
 
 ip = InserirPartitura()
 ip.set_path()
@@ -52,10 +52,10 @@ def escreverHarmonia():
     s2 = stream.Stream()
     ho.setStreamHarmonia(s2)
     HarmonizarMelodia2().harmonizando2()
-def haveraGaps():
-    tg = TrabalhandoGaps2()
-    tg.havera_gaps()
-    print(tg.get())
+# def haveraGaps():
+#     tg = TrabalhandoGaps2()
+#     tg.havera_gaps()
+#     print(tg.get())
 def incomplete_compass():
     pc = PrimeiroCompasso()
     pc.set_compasso_status()
@@ -116,9 +116,8 @@ def testeObterBeatsHarmonizacao2():
             print(end=', ')
 
 def testePrint2():
-    inserirTonalidade()
+    inserirTomC()
     extrairDadosPartitura()
-    extrairFormulaCompasso()
     incomplete_compass()
     extrairBeatsHarmonizacao()
     Print2().print_partitura_original2()
@@ -131,10 +130,10 @@ def testeReescreverMelodia2():
     ho = HarmoniaObtida2()
     mostrarPartituraMelodia()
 
-def testeTrabalhandoGaps2():
-    extrairDadosPartitura()
-    incomplete_compass()
-    extrairBeatsHarmonizacao()
+# def testeTrabalhandoGaps2():
+#     extrairDadosPartitura()
+#     incomplete_compass()
+#     extrairBeatsHarmonizacao()
 
 def testeHarmonizarMelodia2():
     inserirTomC()

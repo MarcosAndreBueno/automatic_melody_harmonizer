@@ -1,11 +1,15 @@
+import time
+from threading import Thread
 from tkinter import Tk, Button
 
+from harmonizar_viterbi.DestruirLoading import DestruirLoading
+from harmonizar_viterbi.InterfaceHarmonizacao import InterfaceHarmonizacao
 from janelas_interativas.InterfaceInterativa import InterfaceInterativa
 from janelas_interativas.botoes_menu.botoes_start.TelaTonalidade import TelaTonalidade
 from janelas_interativas.janelas.TelaAbertura import TelaAbertura
 from janelas_interativas.janelas.TelaLoading import TelaLoading
 from janelas_interativas.janelas.TelaPrincipal import TelaPrincipal
-from teorema_bayes.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
+from harmonizar_viterbi.extrair_dados.Tonalidade.Tonalidade2 import Tonalidade2
 
 
 def testeInterfaceInterativa():
@@ -29,5 +33,11 @@ def testeTelaTonalidade():
     print("tom inserido", tom)
 
 def testeTelaLoading():
-    TelaLoading().criar()
-
+    print("Tela loading desativa após 5seg")
+    start = time.time()
+    tl = TelaLoading()
+    dl = DestruirLoading()
+    t1 = Thread(target=tl.criar)
+    t2 = Thread(target=dl.destruir, args=(start, ))
+    t1.start()
+    t2.start()
