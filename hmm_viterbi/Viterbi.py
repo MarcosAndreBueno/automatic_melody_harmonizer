@@ -135,9 +135,9 @@ class Viterbi:
 
     def hidden_method(self):
         hiddenT = hiddenS = hiddenD = ''
-        ton1 = self.prob_anterior_ton[0][0]
-        ton2 = self.prob_anterior_ton[0][1]
-        ton3 = self.prob_anterior_ton[0][2]
+        ton1 = self.prob_anterior_ton[0][0] #tonica ir para tonica
+        ton2 = self.prob_anterior_ton[0][1] #s ir para tonica
+        ton3 = self.prob_anterior_ton[0][2] #d ir para tonica
         sub1 = self.prob_anterior_sub[0][0]
         sub2 = self.prob_anterior_sub[0][1]
         sub3 = self.prob_anterior_sub[0][2]
